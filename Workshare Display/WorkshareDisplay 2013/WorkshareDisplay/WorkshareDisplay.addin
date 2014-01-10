@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Activate Worksets Display</Text>
+    <Description>Add-in to activate Worksets Worksharing Display Mode to selected Views for Revit 2013</Description>
+    <Assembly>WorkshareDisplay.dll</Assembly>
+    <FullClassName>WorkshareDisplay.Workshare</FullClassName>
+    <ClientId>6F374EE9-2EF7-4bab-928E-CD0CC10A2B55</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - BIM Team</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Refresh Dependent Views</Text>
+    <Description>Refresh visibility of Detail Groups in Dependent Views</Description>
+    <Assembly>HideGroups.dll</Assembly>
+    <FullClassName>HideGroups.hideGroupsCmd</FullClassName>
+    <ClientId>79C3FF72-7EA3-4b5a-BA3E-34F25755D0D0</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - BIM Team</VendorDescription>
+  </AddIn>
+</RevitAddIns>
+

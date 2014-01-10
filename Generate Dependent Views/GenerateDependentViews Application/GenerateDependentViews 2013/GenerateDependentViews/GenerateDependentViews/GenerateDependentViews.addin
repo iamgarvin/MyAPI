@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Generate Dependent Views</Text>
+    <Description>Automatically generate a series of dependent views</Description>
+    <Assembly>generateDependentViews.dll</Assembly>
+    <FullClassName>GenerateDependentViews.generateDependentViews</FullClassName>
+    <ClientId>F370D53C-8AFF-4f40-9819-3DB404C3684A</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - BIM Team</VendorDescription>
+  </AddIn>
+</RevitAddIns>
+

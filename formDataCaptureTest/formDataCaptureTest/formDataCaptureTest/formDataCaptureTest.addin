@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>formDataCaptureTest</Text>
+    <Description>Testing App to capture data from user input through windows forms</Description>
+    <Assembly>C:\Users\A5_Test\Desktop\My API\formDataCaptureTest\formDataCaptureTest\formDataCaptureTest\bin\Debug\formDataCaptureTest.dll</Assembly>
+    <FullClassName>formDataCaptureTest.Commands</FullClassName>
+    <ClientId>39352007-9306-476f-a998-4b68721cec7a</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - BIM Team</VendorDescription>
+  </AddIn>
+</RevitAddIns>

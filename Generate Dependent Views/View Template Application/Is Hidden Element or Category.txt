@@ -1,0 +1,21 @@
+//code checks whether element is hidden in a given view and returns true if either it is hidden as an individual element or its category is hidden
+
+
+
+static bool IsHiddenElementOrCategory(
+  Element e,
+  View v )
+{
+  bool hidden = e.IsHidden( v );
+ 
+  if( !hidden )
+  {
+    Category cat = e.Category;
+    while( null != cat && !hidden )
+    {
+      hidden = !cat.get_Visible( v );
+      cat = cat.Parent;
+    }
+  }
+  return hidden;
+}

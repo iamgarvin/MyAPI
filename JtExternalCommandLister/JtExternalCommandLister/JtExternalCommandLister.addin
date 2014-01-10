@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>External Command Lister</Text>
+    <Description>List all external commands defined in a selected .NET assembly</Description>
+    <Assembly>JtExternalCommandLister.dll</Assembly>
+    <FullClassName>JtExternalCommandLister.Command</FullClassName>
+    <ClientId>37c15f30-5232-4e8c-96dc-10719c3fd442</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

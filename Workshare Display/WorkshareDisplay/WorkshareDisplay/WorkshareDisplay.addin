@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Activate Worksets Display</Text>
+    <Description>Add-in to activate Worksets Worksharing Display Mode to selected Views</Description>
+    <Assembly>WorkshareDisplay.dll</Assembly>
+    <FullClassName>WorkshareDisplay.Workshare</FullClassName>
+    <ClientId>B20BD64C-B5AA-4a9f-9928-EED1FB43C44F</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - BIM Team</VendorDescription>
+  </AddIn>
+</RevitAddIns>

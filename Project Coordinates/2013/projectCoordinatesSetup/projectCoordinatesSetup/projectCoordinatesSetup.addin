@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Project Coordinates Setup</Text>
+    <Description>Add-in to set-up the project coordinates of the project</Description>
+    <Assembly>projectCoordinatesSetup.dll</Assembly>
+    <FullClassName>projectCoordinatesSetup.Commands</FullClassName>
+    <ClientId>cc27d193-7bdb-4225-9293-79da6b1cad39</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - BIM Team</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Save Screen Shot</Text>
+    <Description>Quickly take a screenshot of the existing view</Description>
+    <Assembly>PrintScreen.dll</Assembly>
+    <ClientId>ff1baa46-72c2-45a1-9780-d28aee37980d</ClientId>
+    <FullClassName>PrintScreen.printScreenCmd</FullClassName>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - BIM Team</VendorDescription>
+  </AddIn>
+</RevitAddIns>

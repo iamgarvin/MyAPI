@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Section Box Visibility</Text>
+    <Description>Shortcut Command to Hide/Unhide the Section Box in 3D View</Description>
+    <Assembly>SectionBoxVisibility.dll</Assembly>
+    <FullClassName>SectionBoxVisibility.Commands</FullClassName>
+    <ClientId>aa4e993d-10b7-42fa-a5dc-645f80763ce3</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - (BIM Team)</VendorDescription>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+  </AddIn>
+</RevitAddIns>

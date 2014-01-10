@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+<AddIn Type="Command">
+<Assembly>C:\Users\A5_Test\Desktop\My API\Hello World\HelloWorld\HelloWorld\bin\Debug\HelloWorld.dll</Assembly> <!--//dll name here, full directory required-->
+<ClientId>9BD1FA39-C5CF-46f6-BF0C-A6B5F2B2DD80</ClientId> <!--//unique id generated using guiden.exe-->
+<FullClassName>HelloWorld.Class1</FullClassName> <!--//name of the c# class file-->
+<Text>Hello World</Text> <!--//Name of the Add-in that is to be shown in Revit-->
+<VendorId>RSPA</VendorId> <!--//Vendor Id is RSPA-->
+<VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - (BIM Team)</VendorDescription>
+
+</AddIn>
+</RevitAddIns>
