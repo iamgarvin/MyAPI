@@ -25,7 +25,7 @@ namespace HideGroups
         List<ElementId> m_grpElementId = new List<ElementId>();
         public string[] viewstring = new string[] {"DOOR & WINDOW KEY PLAN", "FLOOR FINISH PLAN", "REFLECTED CEILING PLAN", "WALL SCHEDULE PLAN", "WATERPROOFING KEY PLAN", "FIRE COMPARTMENTATION PLAN"};
         public string[] grpstring = new string[] { "DOOR & WINDOW", "FLOOR FINISH", "REFLECTED CEILING", "WALL TAG", "WATERPROOFING", "FIRE COMPARTMENTATION" };
-
+        // to edit the "WALL TAG" and convert it to "Wall Type" in grpstring[]; also convert "WALL SCHEDULE PLAN" to "WALL TYPE + BUILDABILITY"
 
         public ViewSet returnAllViews
         {
