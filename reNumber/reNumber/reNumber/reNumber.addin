@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Application reNumber</Name>
+    <Assembly>C:\Users\A5_Test\Desktop\MyAPI\reNumber\reNumber\reNumber\bin\debug\reNumber.dll</Assembly>
+    <ClientId>50883680-195e-4d63-a86e-c106a6946c4d</ClientId>
+    <FullClassName>reNumber.Application</FullClassName>
+  </AddIn>
+</RevitAddIns>
