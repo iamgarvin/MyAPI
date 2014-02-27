@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
-
-//using Wiip.Revit.Numbering.Properties;
 //using Wiip.Lib;
 
 namespace reNumber
@@ -12,13 +10,13 @@ namespace reNumber
     {
         private readonly Dictionary<string, int> values;
         private readonly Options options;
-        private readonly RomanNumeralizer rn;
+        private readonly reNumber.RomanNumeralizer rn;
 
         internal NumberGenerator (Options option)
         {
             this.values = new Dictionary<string,int>();
             this.rn = new RomanNumeralizer();
-            base..ctor(); // can remove
+            //base..ctor(); // can remove
             this.options = options;
             this.values.Add("", options.StartValue);
         }
@@ -48,7 +46,7 @@ namespace reNumber
             if (!values.ContainsKey(group)) values.Add(group, options.StartValue);
             string str = options.Format.Replace("$(" + Resources.Value + ")", GetValueAsString(values[group], options.NumberingType).PadLeft(options.LeftPadding, options.NumberingType == NumberingType.Numeric ? '0' : ' '));
             if (0 <= row)
-                str = str.Replace("$(" + Resources.Row + ")", GetValueAsString(row, options.RowNumberingType).PadLeft(options.RowLeftPadding, options.RowNumberingType == NumeringType.Numeric ? '0' : ""));
+                str = str.Replace("$(" + Resources.Row + ")", GetValueAsString(row, options.RowNumberingType).PadLeft(options.RowLeftPadding, options.RowNumberingType == NumberingType.Numeric ? '0' : ' '));
             if (0 <= column)
                 str = str.Replace("$(" + Resources.Column + ")", GetValueAsString(column, options.ColumnNumberingType).PadLeft(options.ColumnLeftPadding, options.ColumnNumberingType == NumberingType.Numeric ? '0' : ' '));
             values[group] = values[group] + options.Increment;

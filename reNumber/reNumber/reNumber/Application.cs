@@ -19,7 +19,7 @@ namespace reNumber
     class Application : IExternalApplication
     {
         private const string FULL_VERSION_DOWNLOAD_URL = "BLAH BLAH";
-        private const int NUMBER_OF_TRIAL DAYS = 30;
+        //private const int NUMBER_OF_TRIAL DAYS == 30;       //can remove
         private static AddInProperties addInProperties;  // <---- what is this
         private static bool trialVersionMsgShown;
 
@@ -41,7 +41,7 @@ namespace reNumber
 
         public Application ()
         {
-            base..ctor();
+            //base..ctor();
         }
 
         
