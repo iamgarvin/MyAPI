@@ -94,7 +94,7 @@ namespace reNumber
                     return (Result) (-1);
                 }
             }
-            this.comparer = (IComparer<XYZ>) null;
+            comparer = (IComparer<XYZ>) null;
             switch (NumberingCommand.options.Direction)
             {
                 case Direction.Right:
@@ -109,56 +109,56 @@ namespace reNumber
                 case Direction.Up:
                     comparer = (IComparer<XYZ>) new VerticalComparer(false, false, true);
                     break;
-                case Direction.HorizontalLeftBottomToRightTop:
-                    comparer = (IComparer<XYZ> new HorizontalComparer(false, false, false));
-                    break;
-                case Direction.HorizontalLeftTopToRightBottom:
-                    comparer = (IComparer<XYZ> new HorizontalComparer(false, true, false));
-                    break;
-                case Direction.HorizontalRightBottomToLeftTop:
-                    comparer = (IComparer<XYZ> new HorizontalComparer(true, false, false));
-                    break;
-                case Direction.HorizontalRightTopToLeftBottom:
-                    comparer = (IComparer<XYZ> new HorizontalComparer(true, true, false));
-                    break;
-                case Direction.VerticalLeftBottomToRightTop:
-                    comparer = (IComparer<XYZ> new VerticalComparer(false, false, false));
-                    break;
-                case Direction.VerticalLeftTopToRightBottom:
-                    comparer = (IComparer<XYZ> new VerticalComparer(false, true, false));
-                    break;
-                case Direction.VerticalRightBottomToLeftTop:
-                    comparer = (IComparer<XYZ> new VerticalComparer(true, false, false));
-                    break;
-                case Direction.VerticalRightTopToLeftBottom:
-                    comparer = (IComparer<XYZ> new VerticalComparer(true, true, false));
-                    break;
+                //case Direction.HorizontalLeftBottomToRightTop:   //can omit from code// not needed for practice
+                    //comparer = (IComparer<XYZ> new HorizontalComparer(false, false, false));
+                    //break;
+                //case Direction.HorizontalLeftTopToRightBottom:
+                    //comparer = (IComparer<XYZ> new HorizontalComparer(false, true, false));
+                    //break;
+                //case Direction.HorizontalRightBottomToLeftTop:
+                    //comparer = (IComparer<XYZ> new HorizontalComparer(true, false, false));
+                    //break;
+                //case Direction.HorizontalRightTopToLeftBottom:
+                    //comparer = (IComparer<XYZ> new HorizontalComparer(true, true, false));
+                    //break;
+                //case Direction.VerticalLeftBottomToRightTop:
+                    //comparer = (IComparer<XYZ> new VerticalComparer(false, false, false));
+                    //break;
+                //case Direction.VerticalLeftTopToRightBottom:
+                    //comparer = (IComparer<XYZ> new VerticalComparer(false, true, false));
+                    //break;
+                //case Direction.VerticalRightBottomToLeftTop:
+                    //comparer = (IComparer<XYZ> new VerticalComparer(true, false, false));
+                    //break;
+                //case Direction.VerticalRightTopToLeftBottom:
+                    //comparer = (IComparer<XYZ> new VerticalComparer(true, true, false));
+                    //break;
             }
 
             using (Transaction transaction = new Transaction(document))
             {
-                if (transaction.Start("Numbering") == 1)
+                if (transaction.Start("Numbering") == 1) //double check if "Numbering should be used, because class name is changed to reNumber
                 {
                     ng = new NumberGenerator(NumberingCommand.options);
                     switch (selectionMode)
                     {
-                        case reNumber.SelectionMode.AllElements:
-                            FilteredElementCollector elementCollector1 = new FilteredElementCollector(document);
-                            elementCollector1.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
-                            this.Number(elementCollector1.ToElementIds());
-                            break;
+                        //case reNumber.SelectionMode.AllElements: //not needed for practice
+                            //FilteredElementCollector elementCollector1 = new FilteredElementCollector(document);
+                            //elementCollector1.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
+                            //this.Number(elementCollector1.ToElementIds());
+                            //break;
 
-                        case SelectionMode.AllElementsOfTheActiveView:
-                            FilteredElementCollector elementCollector2 = new FilteredElementCollector(document, (document.ActiveView.Id()));
+                        //case SelectionMode.AllElementsOfTheActiveView: //not needed for practice
+                            //FilteredElementCollector elementCollector2 = new FilteredElementCollector(document, (document.ActiveView.Id()));
 
-                            elementCollector2.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
-                            this.Number(elementCollector2.ToElementIds());
+                            //elementCollector2.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
+                            //this.Number(elementCollector2.ToElementIds());
                             break;
 
                         case SelectionMode.Multiple:
                             CategorySelectionFilter categorySelectionFilter1 = new CategorySelectionFilter (NumberingCommand.options.CategoryId);
                             ICollection<ElementId> elementIds;
-                            if ((ElementSet) selection.Elements.Size == 0)
+                            if ((ElementSet) selection.Elements.Size == 0) //check for elements selected during initialization
                             {
                                 try 
                                 {
@@ -166,7 +166,7 @@ namespace reNumber
                                     if(list == null)
                                         return (Result) 1;
                                     elementIds= (ICollection<ElementId>) new Collection<ElementId>();
-                                    using (IEnumerator<Reference> CharEnumerator = ((IEnumerable<Reference>)list).GetEnumerator())
+                                    using (IEnumerator<Reference> CharEnumerator = ((IEnumerable<Reference>)list).GetEnumerator()) //enumerator to cycle thru selected items for renumbering
                                     {
                                         while (((IEnumerator) CharEnumerator).MoveNext())
                                         {
@@ -177,7 +177,7 @@ namespace reNumber
                                 }
                                 catch (OperationCanceledException ex)
                                 {
-                                    return (Result) 1;
+                                    return (Result) 1; //cancelled
                                 }
                             }
                             else
@@ -186,7 +186,7 @@ namespace reNumber
                             break;
 
                         case reNumber.SelectionMode.OneByOne:
-                            CategorySelectionFilter categorySelectionFilter2 = new CategorySelectionFilter (NumberingCommand.optiosn.CategoryId);
+                            CategorySelectionFilter categorySelectionFilter2 = new CategorySelectionFilter (NumberingCommand.options.CategoryId);
                             while (true)
                             {
                                 try
@@ -195,7 +195,7 @@ namespace reNumber
                                     if (Control.ModifierKeys.HasFlag((Enum) Keys.Control))
                                         this.ng.ResetValues();
 
-                                    this.SetMark(document.GetElement(reference.ElementId),-1,-1);
+                                    this.SetMark(document.GetElement(reference.ElementId),-1,-1);  // init SetMark to collect elements as the reference element to start numbering
                                     document.Regenerate();
     
                                 }
@@ -251,7 +251,7 @@ namespace reNumber
                             }
                             Predicate<double> match2 = predicate2;
                             int column = list4.FindIndex(match2)+1;
-                            numberingCommand.SetMark(elem, row, column);
+                            numberingCommand.SetMark(elem, row, column); //call SetMark to renumber the element using the loop
                         }
                     }
                 }
@@ -266,7 +266,7 @@ namespace reNumber
             {
                 while (((IEnumerator) enumerator).MoveNext())
                 {
-                    Element element = this.document.GetElement(enumerator.Current);
+                    Element element = document.GetElement(enumerator.Current);
                     if (element.Category != null && element.Category.Id.IntegerValue == NumberingCommand.options.CategoryId)
                     {
                         BoundingBoxXYZ boundingBox = element.get_BoundingBox(element.Document.ActiveView);
