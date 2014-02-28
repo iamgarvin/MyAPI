@@ -44,11 +44,11 @@ namespace reNumber
         public string NextNumber(int row = -1, int column = -1, string group = "")
         {
             if (!values.ContainsKey(group)) values.Add(group, options.StartValue);
-            string str = options.Format.Replace("$(" + Resources.Value + ")", GetValueAsString(values[group], options.NumberingType).PadLeft(options.LeftPadding, options.NumberingType == NumberingType.Numeric ? '0' : ' '));
+            string str = options.Format.Replace("$(" + reNumberData.Value + ")", GetValueAsString(values[group], options.NumberingType).PadLeft(options.LeftPadding, options.NumberingType == NumberingType.Numeric ? '0' : ' '));
             if (0 <= row)
-                str = str.Replace("$(" + Resources.Row + ")", GetValueAsString(row, options.RowNumberingType).PadLeft(options.RowLeftPadding, options.RowNumberingType == NumberingType.Numeric ? '0' : ' '));
+                str = str.Replace("$(" + reNumberData.Row + ")", GetValueAsString(row, options.RowNumberingType).PadLeft(options.RowLeftPadding, options.RowNumberingType == NumberingType.Numeric ? '0' : ' '));
             if (0 <= column)
-                str = str.Replace("$(" + Resources.Column + ")", GetValueAsString(column, options.ColumnNumberingType).PadLeft(options.ColumnLeftPadding, options.ColumnNumberingType == NumberingType.Numeric ? '0' : ' '));
+                str = str.Replace("$(" + reNumberData.Column + ")", GetValueAsString(column, options.ColumnNumberingType).PadLeft(options.ColumnLeftPadding, options.ColumnNumberingType == NumberingType.Numeric ? '0' : ' '));
             values[group] = values[group] + options.Increment;
             return str;
         }
@@ -60,7 +60,7 @@ namespace reNumber
             {
                 case NumberingType.Numeric: str = v.ToString((IFormatProvider)CultureInfo.InvariantCulture);
                     break;
-                case NumberingType.Alpha: str = Mark.NumToalpha(ValueType);
+                case NumberingType.Alpha: str = Mark.NumToAlpha(v);
                     break;
                 case NumberingType.AlphaLowerCase: str = Mark.NumToAlpha(v).ToLower();
                     break;

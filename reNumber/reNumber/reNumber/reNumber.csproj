@@ -69,16 +69,10 @@
     <Compile Include="HorizontalComparer.cs" />
     <Compile Include="NumberGenerator.cs" />
     <Compile Include="NumberingCommand.cs" />
-    <Compile Include="NumberingOptionsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NumberingOptionsForm.Designer.cs">
-      <DependentUpon>NumberingOptionsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="NumberingType.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources.cs" />
+    <Compile Include="reNumberData.cs" />
     <Compile Include="RomanNeuralizer.cs" />
     <Compile Include="RomanNumeralPair.cs" />
     <Compile Include="SelectionMode.cs" />

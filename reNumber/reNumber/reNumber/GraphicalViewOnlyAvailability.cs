@@ -14,7 +14,7 @@ namespace reNumber
             if (((object)viewType).ToString().EndsWith("Report") || ((object)viewType).ToString().EndsWith("Schedule"))
                 return false;
             else
-                return viewType != 11;
+                return viewType != 11;      //problem here
         }
     }
 }

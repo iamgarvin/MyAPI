@@ -10,7 +10,7 @@ namespace reNumber
 
         public CategorySelectionFilter (int categoryId)
         {
-            base..ctor(); //can remove
+            //base..ctor(); //can remove
             categoryId = categoryId;
         }
 
