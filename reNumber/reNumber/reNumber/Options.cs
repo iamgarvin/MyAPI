@@ -180,7 +180,7 @@ namespace reNumber
             }
         }
 
-        public Direction DIrection
+        public Direction Direction
         {
             get
             {

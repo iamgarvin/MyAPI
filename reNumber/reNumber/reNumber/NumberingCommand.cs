@@ -117,6 +117,7 @@ namespace reNumber
                 case Direction.Up:
                     comparer = (IComparer<XYZ>) new VerticalComparer(false, false, true);
                     break;
+<<<<<<< HEAD
                 //case Direction.HorizontalLeftBottomToRightTop:   //can omit from code// not needed for practice
                     //comparer = (IComparer<XYZ> new HorizontalComparer(false, false, false));
                     //break;
@@ -141,6 +142,33 @@ namespace reNumber
                 //case Direction.VerticalRightTopToLeftBottom:
                     //comparer = (IComparer<XYZ> new VerticalComparer(true, true, false));
                     //break;
+=======
+                
+//                //case Direction.HorizontalLeftBottomToRightTop:
+//                    comparer = (IComparer<XYZ> new HorizontalComparer(false, false, false));
+//                    break;
+//                case Direction.HorizontalLeftTopToRightBottom:
+//                    comparer = (IComparer<XYZ> new HorizontalComparer(false, true, false));
+//                    break;
+//                case Direction.HorizontalRightBottomToLeftTop:
+//                    comparer = (IComparer<XYZ> new HorizontalComparer(true, false, false));
+//                    break;
+//                case Direction.HorizontalRightTopToLeftBottom:
+//                    comparer = (IComparer<XYZ> new HorizontalComparer(true, true, false));
+//                    break;
+//                case Direction.VerticalLeftBottomToRightTop:
+//                    comparer = (IComparer<XYZ> new VerticalComparer(false, false, false));
+//                    break;
+//                case Direction.VerticalLeftTopToRightBottom:
+//                    comparer = (IComparer<XYZ> new VerticalComparer(false, true, false));
+//                    break;
+//                case Direction.VerticalRightBottomToLeftTop:
+//                    comparer = (IComparer<XYZ> new VerticalComparer(true, false, false));
+//                    break;
+//                case Direction.VerticalRightTopToLeftBottom:
+//                    comparer = (IComparer<XYZ> new VerticalComparer(true, true, false));
+//                    break;
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
             }
 
             using (Transaction transaction = new Transaction(document))
@@ -154,12 +182,21 @@ namespace reNumber
                     ng = new NumberGenerator(NumberingCommand.options);
                     switch (selectionMode)
                     {
+<<<<<<< HEAD
                         //case reNumber.SelectionMode.AllElements: //not needed for practice
                             //FilteredElementCollector elementCollector1 = new FilteredElementCollector(document);
                             //elementCollector1.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
                             //this.Number(elementCollector1.ToElementIds());
                             //break;
+=======
+//                        case reNumber.SelectionMode.AllElements:
+//                            FilteredElementCollector elementCollector1 = new FilteredElementCollector(document);
+//                            elementCollector1.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
+//                            this.Number(elementCollector1.ToElementIds());
+//                            break;
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                         //case SelectionMode.AllElementsOfTheActiveView: //not needed for practice
                             //FilteredElementCollector elementCollector2 = new FilteredElementCollector(document, (document.ActiveView.Id()));
@@ -167,36 +204,60 @@ namespace reNumber
                         case SelectionMode.AllElementsOfTheActiveView:
                             FilteredElementCollector elementCollector2 = new FilteredElementCollector(document, document.ActiveView.Id);
 >>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
+=======
+//                        case SelectionMode.AllElementsOfTheActiveView:
+//                            FilteredElementCollector elementCollector2 = new FilteredElementCollector(document, document.ActiveView.Id);
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
 
+<<<<<<< HEAD
                             //elementCollector2.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
                             //this.Number(elementCollector2.ToElementIds());
                             break;
+=======
+//                            elementCollector2.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
+//                            this.Number(elementCollector2.ToElementIds());
+//                            break;
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
 
                         case SelectionMode.Multiple:
                             CategorySelectionFilter categorySelectionFilter1 = new CategorySelectionFilter (NumberingCommand.options.CategoryId);
                             ICollection<ElementId> elementIds;
 <<<<<<< HEAD
+<<<<<<< HEAD
                             if ((ElementSet) selection.Elements.Size == 0) //check for elements selected during initialization
 =======
                             if (selection.Elements.Size == 0)
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
+=======
+                            if (selection.Elements.Size == 0)       //if no elements are selected before init of the code,
 >>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
                             {
                                 try 
                                 {
                                     IList<Reference> list = selection.PickObjects((ObjectType) 1, (ISelectionFilter) categorySelectionFilter1, reNumberData.SelectEltsToBeNumbered);
+<<<<<<< HEAD
                                     if(list == null)
                                         return Result.Cancelled;
                                     elementIds= (ICollection<ElementId>) new Collection<ElementId>();
                                     using (IEnumerator<Reference> CharEnumerator = ((IEnumerable<Reference>)list).GetEnumerator()) //enumerator to cycle thru selected items for renumbering
+=======
+                                    if (list == null)               //if there is no selection, cancel
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
                                     {
-                                        while (((IEnumerator) CharEnumerator).MoveNext())
+                                        return Result.Cancelled;
+                                    }
+
+                                    elementIds= new Collection<ElementId>();            //refresh elementIds as anew
+                                    using (IEnumerator<Reference> CharEnumerator = ((IEnumerable<Reference>)list).GetEnumerator()) //using loop to cycle thru enumerator to retrieve the elementid of the current element in the selection.
+                                    {
+                                        while ( CharEnumerator.MoveNext())
                                         {
                                             Reference current = CharEnumerator.Current;
                                             elementIds.Add(current.ElementId);
                                         }
                                     }
                                 }
-                                catch (OperationCanceledException ex)
+                                catch (Exception ex)
                                 {
 <<<<<<< HEAD
                                     return (Result) 1; //cancelled
@@ -205,27 +266,35 @@ namespace reNumber
 >>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
                                 }
                             }
-                            else
+                            else   //if there are elements selected before the init of the code, retrieve the elementIds of the selection.
+                            {
                                 elementIds = selection.GetElementIds();
-                            this.Number(elementIds);
+                            }
+                                
+                            Number(elementIds);         //call Number method to enter the numbering for the selected elementIds
                             break;
 
+<<<<<<< HEAD
                         case reNumber.SelectionMode.OneByOne:
+=======
+                        case SelectionMode.OneByOne:
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
                             CategorySelectionFilter categorySelectionFilter2 = new CategorySelectionFilter (NumberingCommand.options.CategoryId);
                             while (true)
                             {
                                 try
                                 {
                                     Reference reference = selection.PickObject((ObjectType) 1, (ISelectionFilter) categorySelectionFilter1, reNumberData.SelectEltToBeNumbered);
-                                    if (Control.ModifierKeys.HasFlag((Enum) Keys.Control))
+                                    if (System.Windows.Forms.Control.ModifierKeys.HasFlag((Enum)Keys.Control))
+                                    {
                                         this.ng.ResetValues();
+                                    }
 
                                     this.SetMark(document.GetElement(reference.ElementId),-1,-1);  // init SetMark to collect elements as the reference element to start numbering
                                     document.Regenerate();
-    
                                 }
 
-                                catch (OperationCanceledException ex)
+                                catch (Exception ex)
                                 {
                                     break;
                                 }
@@ -286,10 +355,10 @@ namespace reNumber
         private SortedList<XYZ, List<Element>> Sort(ICollection<ElementId> elementIds)
         {
             SortedList<XYZ, List<Element>> sortedList1 = new SortedList<XYZ,List<Element>>(elementIds.Count, this.comparer);
-            Transform transform = (Transform) null;
+            Transform transform = null;
             using (IEnumerator<ElementId> enumerator = elementIds.GetEnumerator())
             {
-                while (((IEnumerator) enumerator).MoveNext())
+                while (enumerator.MoveNext())
                 {
                     Element element = document.GetElement(enumerator.Current);
                     if (element.Category != null && element.Category.Id.IntegerValue == NumberingCommand.options.CategoryId)
@@ -297,10 +366,10 @@ namespace reNumber
                         BoundingBoxXYZ boundingBox = element.get_BoundingBox(element.Document.ActiveView);
                         if (boundingBox != null)
                         {
-                            XYZ key1 =  XYZ.op_Division(XYZ.op_Addition(boundingBox.Min, boundingBox.Max,2.0));
+                            XYZ key1 =  XYZ.op_Division(XYZ.op_Addition(boundingBox.Min, boundingBox.Max),2.0);
                             if(selectionMode != reNumber.SelectionMode.AllElements)
                             {
-                                if(Transform == null)
+                                if(transform == null)
                                 {
                                     transform = Transform.Identity;
                                     Autodesk.Revit.DB.View activeView = element.Document.ActiveView;
@@ -403,7 +472,7 @@ namespace reNumber
 
             if(boundingBox !=null)
             {
-                XYZ xyz = XYZ.op_Division(XYZ.op_Addition(boundingBox.Min, boundingBox.Mac, 2.0));
+                XYZ xyz = XYZ.op_Division(XYZ.op_Addition(boundingBox.Min, boundingBox.Max, 2.0));
                 dictionary2.Add(reNumberData.PositionX, Units.InternalToDoc(elem.Document, xyz.X, (UnitType) 0).ToString("F2"));
                 dictionary2.Add(reNumberData.PositionY, Units.InternalToDoc(elem.Document, xyz.Y, (UnitType) 0).ToString("F2"));
                 dictionary2.Add(reNumberData.PositionZ, Units.InternalToDoc(elem.Document, xyz.Z, (UnitType) 0).ToString("F2"));
