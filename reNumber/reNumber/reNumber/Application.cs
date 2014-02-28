@@ -18,10 +18,9 @@ namespace reNumber
     [Transaction(TransactionMode.Manual)]
     class Application : IExternalApplication
     {
-        private const string FULL_VERSION_DOWNLOAD_URL = "BLAH BLAH";
-        //private const int NUMBER_OF_TRIAL DAYS == 30;       //can remove
+        
         private static AddInProperties addInProperties;  // <---- what is this
-        private static bool trialVersionMsgShown;
+        
 
         internal static AddInProperties AddInProperties
         {
@@ -50,24 +49,20 @@ namespace reNumber
 
             //startup to initialise the push button for the addin in the ribbon//
 
-            PushButton pushButton = (PushButton) application.CreateRibbonPanel(Application.AddInProperties.Name).AddItem((RibbonItemData) new PushButtonData(typeof (NumberingCommand).FullName, Resources.Numbering, Application.AddInProperties.Location, typeof (NumberingCommand).FullName));
+            PushButton pushButton = (PushButton) application.CreateRibbonPanel(Application.AddInProperties.Name).AddItem((RibbonItemData) new PushButtonData(typeof (NumberingCommand).FullName, reNumberData.Numbering, Application.AddInProperties.Location, typeof (NumberingCommand).FullName));
             //((RibbonButton) pushButton).set_LargeImage();
             //((RibbonButton) pushButton).set_Image();
             pushButton.set_AvailabilityClassName(typeof (GraphicalViewOnlyAvailability).FullName);
             ((RibbonItem) pushButton).SetContextualHelp(new ContextualHelp((ContextualHelpType) 3,Application.HelpFilePath));
 
-            return (Result) 0;
+            return Result.Succeeded;
         }
 
         public Result OnShutdown(UIControlledApplication application)
         {
-            return (Result) 0;
+            return Result.Succeeded;
         }
 
-        internal static bool TrialVersionCheck()
-        {
-            return false;
-        }      //method to check the trial version.. CAN BE REMOVED
 
             
     }

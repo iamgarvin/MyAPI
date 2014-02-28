@@ -13,7 +13,7 @@ namespace reNumber
 
         public HorizontalComparer(bool invertX = false, bool invertY = false, bool ignoreY = false)
         {
-            base.ToString.ctor; //can remove
+            //base.ToString.ctor; //can remove
             this.invertX = invertX;
             this.invertX = invertY;
             this.ignoreY = ignoreY;

@@ -1,3 +1,6 @@
+testing this shit
+
+
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.Exceptions;
@@ -43,35 +46,37 @@ namespace reNumber
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            if(!reNumber.Application.TrialVersionCheck())       //can remove
-                return (Result) 1;      //can remove
-
             UIDocument uiDoc = commandData.Application.ActiveUIDocument;
             document = uiDoc.Document;
             Selection selection = uiDoc.Selection;
-            selectionMode = reNumber.SelectionMode.Multiple;
-            if(((ElementSet) selection.Elements.Size == 0))
+            
+            selectionMode = reNumber.SelectionMode.Multiple;        //selectionmode on default is set to Multiple
+            ///consideration for the addin to only be used for multiple selection and element by element. because our practice does not have a standard direction of how the elements are to be numbered. (ie. doors, windows, carpark, column, beam, etc)
+
+            
+            if(selection.Elements.Size == 0)        //when nothing is selected in the document
             {
-                TaskDialog taskDialog1 = new TaskDialog(Resources.TaskDialogSelectionTitle);        //Resources come from reNumber.Properties
-                taskDialog1.MainInstruction = Resources.ChooseSelectingMethod;        //Resources come from reNumber.Properties
+                //init taskdialog for user to invokde the command.
+                TaskDialog taskDialog1 = new TaskDialog(reNumberData.TaskDialogSelectionTitle);
+                taskDialog1.MainInstruction = reNumberData.ChooseSelectingMethod; 
 
                 TaskDialog taskDialog2 = taskDialog1;
-                taskDialog2.AddCommandLink((TaskDialogCommandLinkId) 1001, Resources.AllElements);
-                taskDialog2.AddCommandLink((TaskDialogCommandLinkId)1002, Resources.AllElementsofActiveView);
-                taskDialog2.AddCommandLink((TaskDialogCommandLinkId)1003, Resources.MultipleSelection);
-                taskDialog2.AddCommandLink((TaskDialogCommandLinkId) 1004, Resources.ElementByElement);
-                taskDialog2.CommonButtons = ((TaskDialogCommonButtons) 8);
-                TaskDialogResult taskDialogResult = taskDialog2.Show();
+                //taskDialog2.AddCommandLink((TaskDialogCommandLinkId) 1001, reNumberData.AllElements);         //not needed for the office
+                //taskDialog2.AddCommandLink((TaskDialogCommandLinkId)1002, reNumberData.AllElementsOfActiveView);      // not needed for the office
+                taskDialog2.AddCommandLink((TaskDialogCommandLinkId)1003, reNumberData.MultipleSelection);
+                taskDialog2.AddCommandLink((TaskDialogCommandLinkId) 1004, reNumberData.ElementByElement);
+                taskDialog2.CommonButtons = ((TaskDialogCommonButtons) 8);      // init the commonButtons for the taskdialog//      //dunno what does '8' stand for
+                TaskDialogResult taskDialogResult = taskDialog2.Show();            //show the taskdialog as a result        //what is the rationale for showing taskdialog2 as the result? why dont call the taskdialog directly?
 
-                if (taskDialogResult ==2)
-                    return (Result) 1;
-                switch (TaskDialogResult (- 1001))
+                if (taskDialogResult.Equals(2))     //what is '2'
+                    return Result.Cancelled;
+                switch (taskDialogResult - 1001)
                 {
                     case 0:
-                        selectionMode = reNumber.SelectionMode.AllElements;
+                        //selectionMode = reNumber.SelectionMode.AllElements;           //not needed for the office
                         break;
-                    case 1:
-                        selectionMode = reNumber.SelectionMode.AllElementsOfTheActiveView;
+                    case 1: 
+                        //selectionMode = reNumber.SelectionMode.AllElementsOfTheActiveView;        //not needed for the office
                         break;
                     case 2:
                         selectionMode = reNumber.SelectionMode.Multiple;
@@ -82,16 +87,19 @@ namespace reNumber
                 }
             }
 
-            using (NumberingOptionsForm numberingOptionsForm = new NumberingOptionsForm (NumberingCommand.options, document))
+            //activate the Form, based on the selectionMode//
+            using (NumberingOptionsForm numberingOptionsForm = new NumberingOptionsForm (NumberingCommand.options, document))       //options not prepared yet, have to manually settle
             {
                 if (numberingOptionsForm.LoadCategories(selectionMode))
                 {
                     if (DialogResult.Cancel == numberingOptionsForm.ShowDialog())
-                        return (Result) 1;
+                        return Result.Cancelled;
                 }
-                else{
-                    TaskDialog.Show(Resources.NoElementsFound, Resources.NoElementThatCanBeRenumbered);
-                    return (Result) (-1);
+                else
+                {
+                    TaskDialog.Show(reNumberData.NoElementsFound, reNumberData.NoElementThatCanBeRenumbered);
+                    return Result.Failed;
+                    
                 }
             }
             comparer = (IComparer<XYZ>) null;
@@ -137,7 +145,11 @@ namespace reNumber
 
             using (Transaction transaction = new Transaction(document))
             {
+<<<<<<< HEAD
                 if (transaction.Start("Numbering") == 1) //double check if "Numbering should be used, because class name is changed to reNumber
+=======
+                if (transaction.Start("Numbering").Equals(1))
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
                 {
                     ng = new NumberGenerator(NumberingCommand.options);
                     switch (selectionMode)
@@ -148,8 +160,13 @@ namespace reNumber
                             //this.Number(elementCollector1.ToElementIds());
                             //break;
 
+<<<<<<< HEAD
                         //case SelectionMode.AllElementsOfTheActiveView: //not needed for practice
                             //FilteredElementCollector elementCollector2 = new FilteredElementCollector(document, (document.ActiveView.Id()));
+=======
+                        case SelectionMode.AllElementsOfTheActiveView:
+                            FilteredElementCollector elementCollector2 = new FilteredElementCollector(document, document.ActiveView.Id);
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
 
                             //elementCollector2.WhereElementIsNotElementType().WherePasses((ElementFilter) new ElementCategoryFilter(new ElementId(NumberingCommand.options.CategoryId)));
                             //this.Number(elementCollector2.ToElementIds());
@@ -158,13 +175,17 @@ namespace reNumber
                         case SelectionMode.Multiple:
                             CategorySelectionFilter categorySelectionFilter1 = new CategorySelectionFilter (NumberingCommand.options.CategoryId);
                             ICollection<ElementId> elementIds;
+<<<<<<< HEAD
                             if ((ElementSet) selection.Elements.Size == 0) //check for elements selected during initialization
+=======
+                            if (selection.Elements.Size == 0)
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
                             {
                                 try 
                                 {
-                                    IList<Reference> list = selection.PickObjects((ObjectType) 1, (ISelectionFilter) categorySelectionFilter1, Resources.SelectEltsToBeNumbered);
+                                    IList<Reference> list = selection.PickObjects((ObjectType) 1, (ISelectionFilter) categorySelectionFilter1, reNumberData.SelectEltsToBeNumbered);
                                     if(list == null)
-                                        return (Result) 1;
+                                        return Result.Cancelled;
                                     elementIds= (ICollection<ElementId>) new Collection<ElementId>();
                                     using (IEnumerator<Reference> CharEnumerator = ((IEnumerable<Reference>)list).GetEnumerator()) //enumerator to cycle thru selected items for renumbering
                                     {
@@ -177,7 +198,11 @@ namespace reNumber
                                 }
                                 catch (OperationCanceledException ex)
                                 {
+<<<<<<< HEAD
                                     return (Result) 1; //cancelled
+=======
+                                    return Result.Cancelled;
+>>>>>>> branch 'master' of https://github.com/iamgarvin/MyAPI
                                 }
                             }
                             else
@@ -191,7 +216,7 @@ namespace reNumber
                             {
                                 try
                                 {
-                                    Reference reference = selection.PickObject((ObjectType) 1, (ISelectionFilter) categorySelectionFilter1, Resources.SelectEltToBeNumbered);
+                                    Reference reference = selection.PickObject((ObjectType) 1, (ISelectionFilter) categorySelectionFilter1, reNumberData.SelectEltToBeNumbered);
                                     if (Control.ModifierKeys.HasFlag((Enum) Keys.Control))
                                         this.ng.ResetValues();
 
@@ -210,7 +235,7 @@ namespace reNumber
                 }
                 transaction.Commit();
             }
-            return (Result) 0;
+            return Result.Succeeded;
         }
 
         private void Number (ICollection<ElementId> elementIds)
@@ -262,7 +287,7 @@ namespace reNumber
         {
             SortedList<XYZ, List<Element>> sortedList1 = new SortedList<XYZ,List<Element>>(elementIds.Count, this.comparer);
             Transform transform = (Transform) null;
-            using (IEnumerator<ElementId> enumerator = ((IEnumerable<ElementId>)elementIds.GetEnumerator()))
+            using (IEnumerator<ElementId> enumerator = elementIds.GetEnumerator())
             {
                 while (((IEnumerator) enumerator).MoveNext())
                 {
@@ -278,7 +303,7 @@ namespace reNumber
                                 if(Transform == null)
                                 {
                                     transform = Transform.Identity;
-                                    View activeView = element.Document.ActiveView;
+                                    Autodesk.Revit.DB.View activeView = element.Document.ActiveView;
                                     transform.BasisX = activeView.RightDirection;
                                     transform.BasisY = activeView.UpDirection;
                                     transform.BasisZ = activeView.ViewDirection;
@@ -325,7 +350,7 @@ namespace reNumber
                     bool flag2 = false;
                     foreach (double num in columns)
                     {
-                        if (Math.Abs(current.X-num < 1E-06))
+                        if (Math.Abs(current.X-num) < 1E-06)
                         {
                             flag2 = true;
                             break;
@@ -343,7 +368,7 @@ namespace reNumber
             DoorsAndWindows.UpdateFromTo(elem);
             string str1 = "";
             if (elem.Level!=null)
-            str1 = NumberGenerator.ExtractLevelNumber(((Element) elem.Level.Name));
+            str1 = NumberGenerator.ExtractLevelNumber(elem.Level.Name.ToString());
             
             string str2 = "";
             FamilyInstance familyInstance1 = elem as FamilyInstance;
@@ -366,22 +391,22 @@ namespace reNumber
                 str5 = ((SpatialElement) familyInstance4.ToRoom).Number;
             
             Dictionary<string, string> dictionary1 = new Dictionary<string,string>();
-            dictionary1.Add (Resources.LevelName, elem.Level != null ? ((Element) elem.Level).Name : "");
-            dictionary1.Add(Resources.LevelNumber, str1);
-            dictionary1.Add(Resources.RoomName, str2);
-            dictionary1.Add(Resources.RoomNumber, str3);
-            dictionary1.Add(Resources.FromRoomNumber, str4);
-            dictionary1.Add(Resources.ToRoomNumber, str5);
+            dictionary1.Add (reNumberData.LevelName, elem.Level != null ? ((Element) elem.Level).Name : "");
+            dictionary1.Add(reNumberData.LevelNumber, str1);
+            dictionary1.Add(reNumberData.RoomName, str2);
+            dictionary1.Add(reNumberData.RoomNumber, str3);
+            dictionary1.Add(reNumberData.FromRoomNumber, str4);
+            dictionary1.Add(reNumberData.ToRoomNumber, str5);
 
             Dictionary<string, string> dictionary2 = dictionary1;
-            BoundingBoxXYZ  boundingBox = elem.get_BoundingBox((View) null);
+            BoundingBoxXYZ  boundingBox = elem.get_BoundingBox((Autodesk.Revit.DB.View) null);
 
             if(boundingBox !=null)
             {
                 XYZ xyz = XYZ.op_Division(XYZ.op_Addition(boundingBox.Min, boundingBox.Mac, 2.0));
-                dictionary2.Add(Resources.PositionX, Units.InternalToDoc(elem.Document, xyz.X, (UnitType) 0).ToString("F2"));
-                dictionary2.Add(Resources.PositionY, Units.InternalToDoc(elem.Document, xyz.Y, (UnitType) 0).ToString("F2"));
-                dictionary2.Add(Resources.PositionZ, Units.InternalToDoc(elem.Document, xyz.Z, (UnitType) 0).ToString("F2"));
+                dictionary2.Add(reNumberData.PositionX, Units.InternalToDoc(elem.Document, xyz.X, (UnitType) 0).ToString("F2"));
+                dictionary2.Add(reNumberData.PositionY, Units.InternalToDoc(elem.Document, xyz.Y, (UnitType) 0).ToString("F2"));
+                dictionary2.Add(reNumberData.PositionZ, Units.InternalToDoc(elem.Document, xyz.Z, (UnitType) 0).ToString("F2"));
             }
 
             List<string> list = new List<string>(NumberingCommand.options.GroupBy.Count);

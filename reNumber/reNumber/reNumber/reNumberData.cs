@@ -13,9 +13,466 @@ using System.Runtime.CompilerServices;
 using System.Text;
 
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 
 namespace reNumber
 {
+    internal class reNumberData
+    {
+        private static SingleAssemblyResourceManager resourceMan;   //where is this  from?
+        private static CultureInfo resourceCulture; //where is this from?
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+
+        internal static SingleAssemblyResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals((object)reNumberData.resourceMan, (object)null))
+                    reNumberData.resourceMan = new SingleAssemblyResourceManager("reNumber.Resources", typeof(reNumberData).Assembly);
+                return reNumberData.resourceMan;
+            }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
+        internal static CultureInfo Culture
+        {
+            get
+            {
+                return reNumberData.resourceCulture;
+            }
+            set
+            {
+                reNumberData.resourceCulture = value;
+            }
+        }
+
+        internal static string AllElements
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("AllElements", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string AllElementsOfActiveView
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("AllElementsOfActiveView", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string Alpha
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("Alpha", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string AlphaLowerCase
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("AlphaLowerCase", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string ChooseSelectingMethod
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("ChooseSelectingMethod", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string ClickHere
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("ClickHere", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string Column
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("Column", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string ContactTechnicalSupport
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("ContactTechnicalSupport", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string ElementByElement
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("ElementByElement", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string FormatMustIncludeAtLeastOneMacro_
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("FormatMustIncludeAtLeastOneMacro_", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string FormatValueMissing
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("FormatValueMissing", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string FromRoomNumber
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("FromRoomNumber", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string LevelName
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("LevelName", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string LevelNumber
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("LevelNumber", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string MandatoryField
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("MandatoryField", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string MultipleSelection
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("MultipleSelection", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string NoElementsFound
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("NoElementsFound", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string NoElementThatCanBeRenumbered
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("NoElementThatCanBeRenumbered", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string NoMacroInFormat
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("NoMacroInFormat", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string Numbering
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("Numbering", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string Numeric
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("Numeric", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string PositionX
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("PositionX", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string PositionY
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("PositionY", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string PositionZ
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("PositionZ", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string Roman
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("Roman", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string RomanLowerCase
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("RomanLowerCase", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string RoomName
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("RoomName", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string RoomNumber
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("RoomNumber", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string Row
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("Row", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string SelectEltsToBeNumbered
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("SelectEltsToBeNumbered", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string SelectEltToBeNumbered
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("SelectEltToBeNumbered", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string SystemDatePostponed
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("SystemDatePostponed", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string SystemDatePostponedTitle
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("SystemDatePostponedTitle", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string TaskDialogSelectionTitle
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("TaskDialogSelectionTitle", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string ToRoomNumber
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("ToRoomNumber", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string TrialPeriodExpired
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("TrialPeriodExpired", reNumberData.resourceCulture);
+            }
+        }       //remove
+
+        internal static string TrialVersion         //remove
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("TrialVersion", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static string TrialVersionExpiresOn
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("TrialVersionExpiresOn", reNumberData.resourceCulture);
+            }
+        }   //remove
+
+        internal static string TrialVersionHasExpired
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("TrialVersionHasExpired", reNumberData.resourceCulture);
+            }
+        }   //remove
+
+        internal static string Value
+        {
+            get
+            {
+                return reNumberData.ResourceManager.GetString("Value", reNumberData.resourceCulture);
+            }
+        }
+
+
+        //bitmap below
+        internal static Bitmap Down
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("Down", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap HLBRT
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("HLBRT", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap HLTRB
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("HLTRB", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap HRBLT
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("HRBLT", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap HRTLB
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("HRTLB", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap Left
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("Left", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap Right
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("Right", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap Up
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("Up", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap VLBRT
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("VLBRT", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap VLTRB
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("VLTRB", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap VRBLT
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("VRBLT", reNumberData.resourceCulture);
+            }
+        }
+
+        internal static Bitmap VRTLB
+        {
+            get
+            {
+                return (Bitmap)reNumberData.ResourceManager.GetObject("VRTLB", reNumberData.resourceCulture);
+            }
+        }
+
+
+        internal reNumberData()
+        {
+            //base..ctor();       //can remove
+        }
+
+    }
+
     public class SingleAssemblyResourceManager : ComponentResourceManager
     {
         private readonly Type contextTypeInfo;
@@ -81,462 +538,6 @@ namespace reNumber
             }
         }
 	}
-
-    internal class Resources
-    {
-        private static SingleAssemblyResourceManager resourceMan;   //where is this  from?
-        private static CultureInfo resourceCulture; //where is this from?
-
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-
-        internal static SingleAssemblyResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals((object)Resources.resourceMan, (object)null))
-                    Resources.resourceCulture = new SingleAssemblyResourceManager("reNumber.Resources", typeof(Resources).Assembly);
-                return Resources.resourceMan;
-            }
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture
-        {
-            get
-            {
-                return Resources.resourceCulture;
-            }
-            set
-            {
-                Resources.resourceCulture = value;
-            }
-        }
-
-        internal static string AllElements
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("AllElements", Resources.resourceCulture);
-            }
-        }
-
-        internal static string AllElementsOfActiveView
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("AllElementsOfActiveView", Resources.resourceCulture);
-            }
-        }
-
-        internal static string Alpha
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("Alpha", Resources.resourceCulture);
-            }
-        }
-
-        internal static string AlphaLowerCase
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("AlphaLowerCase", Resources.resourceCulture);
-            }
-        }
-
-        internal static string ChooseSelectingMethod
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("ChooseSelectingMethod", Resources.resourceCulture);
-            }
-        }
-
-        internal static string ClickHere
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("ClickHere", Resources.resourceCulture);
-            }
-        }
-
-        internal static string Column
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("Column", Resources.resourceCulture);
-            }
-        }
-
-        internal static string ContactTechnicalSupport
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("ContactTechnicalSupport", Resources.resourceCulture);
-            }
-        }
-
-        internal static string ElementByElement
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("ElementByElement", Resources.resourceCulture);
-            }
-        }
-
-        internal static string FormatMustIncludeAtLeastOneMacro_
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("FormatMustIncludeAtLeastOneMacro_", Resources.resourceCulture);
-            }
-        }
-
-        internal static string FormatValueMissing
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("FormatValueMissing", Resources.resourceCulture);
-            }
-        }
-
-        internal static string FromRoomNumber
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("FromRoomNumber", Resources.resourceCulture);
-            }
-        }
-
-        internal static string LevelName
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("LevelName", Resources.resourceCulture);
-            }
-        }
-
-        internal static string LevelNumber
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("LevelNumber", Resources.resourceCulture);
-            }
-        }
-
-        internal static string MandatoryField
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("MandatoryField", Resources.resourceCulture);
-            }
-        }
-
-        internal static string MultipleSelection
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("MultipleSelection", Resources.resourceCulture);
-            }
-        }
-
-        internal static string NoElementsFound
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("NoElementsFound", Resources.resourceCulture);
-            }
-        }
-
-        internal static string NoElementThatCanBeRenumbered
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("NoElementThatCanBeRenumbered", Resources.resourceCulture);
-            }
-        }
-
-        internal static string NoMacroInFormat
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("NoMacroInFormat", Resources.resourceCulture);
-            }
-        }
-
-        internal static string Numbering
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("Numbering", Resources.resourceCulture);
-            }
-        }
-
-        internal static string Numeric
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("Numeric", Resources.resourceCulture);
-            }
-        }
-
-        internal static string PositionX
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("PositionX", Resources.resourceCulture);
-            }
-        }
-
-        internal static string PositionY
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("PositionY", Resources.resourceCulture);
-            }
-        }
-
-        internal static string PositionZ
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("PositionZ", Resources.resourceCulture);
-            }
-        }
-
-        internal static string Roman
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("Roman", Resources.resourceCulture);
-            }
-        }
-
-        internal static string RomanLowerCase
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("RomanLowerCase", Resources.resourceCulture);
-            }
-        }
-
-        internal static string RoomName
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("RoomName", Resources.resourceCulture);
-            }
-        }
-
-        internal static string RoomNumber
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("RoomNumber", Resources.resourceCulture);
-            }
-        }
-
-        internal static string Row
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("Row", Resources.resourceCulture);
-            }
-        }
-
-        internal static string SelectEltsToBeNumbered
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("SelectEltsToBeNumbered", Resources.resourceCulture);
-            }
-        }
-
-        internal static string SelectEltToBeNumbered
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("SelectEltToBeNumbered", Resources.resourceCulture);
-            }
-        }
-
-        internal static string SystemDatePostponed
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("SystemDatePostponed", Resources.resourceCulture);
-            }
-        }
-
-        internal static string SystemDatePostponedTitle
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("SystemDatePostponedTitle", Resources.resourceCulture);
-            }
-        }
-
-        internal static string TaskDialogSelectionTitle
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("TaskDialogSelectionTitle", Resources.resourceCulture);
-            }
-        }
-
-        internal static string ToRoomNumber
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("ToRoomNumber", Resources.resourceCulture);
-            }
-        }
-
-        internal static string TrialPeriodExpired
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("TrialPeriodExpired", Resources.resourceCulture);
-            }
-        }       //remove
-
-        internal static string TrialVersion         //remove
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("TrialVersion", Resources.resourceCulture);
-            }
-        }
-
-        internal static string TrialVersionExpiresOn
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("TrialVersionExpiresOn", Resources.resourceCulture);
-            }
-        }   //remove
-
-        internal static string TrialVersionHasExpired
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("TrialVersionHasExpired", Resources.resourceCulture);
-            }
-        }   //remove
-
-        internal static string Value
-        {
-            get
-            {
-                return Resources.ResourceManager.GetString("Value", Resources.resourceCulture);
-            }
-        }
-
-
-        //bitmap below
-        internal static Bitmap Down
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("Down", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap HLBRT
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("HLBRT", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap HLTRB
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("HLTRB", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap HRBLT
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("HRBLT", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap HRTLB
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("HRTLB", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap Left
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("Left", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap Right
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("Right", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap Up
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("Up", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap VLBRT
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("VLBRT", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap VLTRB
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("VLTRB", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap VRBLT
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("VRBLT", Resources.resourceCulture);
-            }
-        }
-
-        internal static Bitmap VRTLB
-        {
-            get
-            {
-                return (Bitmap)Resources.ResourceManager.GetObject("VRTLB", Resources.resourceCulture);
-            }
-        }
-
-
-        internal Resources()
-        {
-            //base..ctor();       //can remove
-        }
-
-    }
 
     public class AddInProperties
     {
@@ -748,4 +749,43 @@ namespace reNumber
             return ((object)stringBuilder).ToString().Normalize(NormalizationForm.FormC);
         }
     }
+
+    public static class DoorsAndWindows
+    {
+        public static void UpdateFromTo(Element elem)
+        {
+            FamilyInstance familyInstance = elem as FamilyInstance;
+            if (familyInstance == null)
+                return;
+            switch((familyInstance).Category.Id.IntegerValue)
+            {
+                case (-2000023):
+                case (-2000014):
+                    BoundingBoxXYZ boundingBox = (familyInstance).get_BoundingBox((View) null);
+                    if (boundingBox == null)
+                        break;
+                    XYZ xyz1 = XYZ.op_Division(XYZ.op_Addition(boundingBox.Min, boundingBox.Max,2.0));
+                    Room roomAtPoint1 = (familyInstance).Document.GetRoomAtPoint(xyz1);
+                    if(roomAtPoint1!=null)
+                    {
+                        if(familyInstance.ToRoom !=null && roomAtPoint1.Id.IntegerValue == familyInstance.ToRoom.Id.IntegerValue)
+                            break;
+                        familyInstance.FlipFromToRoom();
+                        break;
+                    }
+                    else
+                    {
+                        XYZ xyz2 = XYZ.op_Multiply (familyInstance.FacingOrientation, XYZ.op_Subtraction(boundingBox.Max, boundingBox.Min.GetLength()));
+                        XYZ xyz3 = XYZ.op_Addition(xyz1, xyz2);
+                        Room roomAtPoint2 = familyInstance.Document.GetRoomAtPoint(xyz3);
+
+                        if(roomAtPoint2 == null || familyInstance.FromRoom!=null && roomAtPoint2.Id.IntegerValue == familyInstance.FromRoom.Id.IntegerValue)
+                            break;
+                        familyInstance.FlipFromToRoom();
+                        break;
+                    }
+            }
+        }
+    }
+
 }

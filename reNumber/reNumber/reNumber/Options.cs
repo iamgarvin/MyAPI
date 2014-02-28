@@ -28,7 +28,7 @@ namespace reNumber
         private int rowLeftPadding;
 
 
-        public int CategoyId
+        public int CategoryId
         {
             get
             {
@@ -236,7 +236,7 @@ namespace reNumber
             columnIncrement=1;
             columnNumberingType = NumberingType.Alpha;
             columnStartValue = 1;
-            format = "$(" + Resources.Value + ")";
+            format = "$(" + reNumberData.Value + ")";
             groupBy = new List<string>();
             increment = 1;
             numberingType = NumberingType.Numeric;
