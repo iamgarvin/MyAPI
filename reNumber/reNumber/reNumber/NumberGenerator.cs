@@ -12,7 +12,7 @@ namespace reNumber
         private readonly Options options;
         private readonly reNumber.RomanNumeralizer rn;
 
-        internal NumberGenerator (Options option)
+        internal NumberGenerator (Options options
         {
             this.values = new Dictionary<string,int>();
             this.rn = new RomanNumeralizer();
