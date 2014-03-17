@@ -63,9 +63,7 @@
     <Compile Include="autoNumberApp.cs" />
     <Compile Include="autoNumberCmd.cs" />
     <Compile Include="autoNumberData.cs" />
-    <Compile Include="autoNumberForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="autoNumberForm.cs" />
     <Compile Include="autoNumberForm.Designer.cs">
       <DependentUpon>autoNumberForm.cs</DependentUpon>
     </Compile>
