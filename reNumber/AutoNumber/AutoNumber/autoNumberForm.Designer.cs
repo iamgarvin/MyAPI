@@ -2,6 +2,7 @@
 {
     partial class autoNumberForm
     {
+        private autoNumberData m_data;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -59,6 +60,11 @@
             0,
             0,
             0});
+            this.updwnIncrement.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.updwnIncrement.Name = "updwnIncrement";
             this.updwnIncrement.Size = new System.Drawing.Size(120, 20);
             this.updwnIncrement.TabIndex = 19;
@@ -73,6 +79,11 @@
             this.updwnStartValue.Location = new System.Drawing.Point(98, 93);
             this.updwnStartValue.Maximum = new decimal(new int[] {
             1000000000,
+            0,
+            0,
+            0});
+            this.updwnStartValue.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -91,6 +102,7 @@
             this.cboParameter.Location = new System.Drawing.Point(97, 39);
             this.cboParameter.Name = "cboParameter";
             this.cboParameter.Size = new System.Drawing.Size(121, 21);
+            this.cboParameter.Sorted = true;
             this.cboParameter.TabIndex = 15;
             // 
             // cboDirection
@@ -128,7 +140,9 @@
             this.cboFamilyCategory.Location = new System.Drawing.Point(97, 12);
             this.cboFamilyCategory.Name = "cboFamilyCategory";
             this.cboFamilyCategory.Size = new System.Drawing.Size(121, 21);
+            this.cboFamilyCategory.Sorted = true;
             this.cboFamilyCategory.TabIndex = 18;
+            this.cboFamilyCategory.SelectedIndexChanged += new System.EventHandler(this.cboFamilyCategory_SelectedIndexChanged);
             // 
             // lblNumberingType
             // 
@@ -256,9 +270,9 @@
             this.Name = "autoNumberForm";
             this.Text = "autoNumberForm";
             this.Load += new System.EventHandler(this.autoNumberForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

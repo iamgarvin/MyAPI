@@ -16,17 +16,26 @@ using Autodesk.Revit.UI;
 
 namespace AutoNumber
 {
-    public partial class autoNumberForm : Form
+    partial class autoNumberForm : System.Windows.Forms.Form
     {
-        public autoNumberForm()
+
+
+        public autoNumberForm(autoNumberData data, Document doc)
         {
-            InitializeComponent();
+            m_data = data;  //refer to autoNumberData instance as m_data in this code
+            InitializeComponent(); //begins the form to load
         }
 
         private void autoNumberForm_Load(object sender, EventArgs e)
         {
-            //call the get all categories 
-            // call get all parameters for 1st or default category
+            this.cboFamilyCategory.Items.AddRange(m_data.returnAllCatNames.ToArray());     //call the get all categories 
+            this.cboFamilyCategory.SelectedIndex = 0;
+            //cboParameter.Items.AddRange(m_data.something);          // call get all parameters for 1st or default category
+
+            m_data.SelectedCategory = cboParameter.SelectedText;
+
+            this.cboParameter.Items.AddRange(m_data.returnAllParametersNames.ToArray());
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -37,59 +46,15 @@ namespace AutoNumber
             this.Close();     
         }
 
-        //public autoNumberForm(autoNumberData data, Document doc)
-        //{
-        //    m_data = data;
-
-        //    InitializeComponent();
-        //}
-
-
-        //method to get all categories
-        private void GetCategories (Document doc)
+        private void cboFamilyCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CategorySet allCategories = new CategorySet();
-            FilteredElementCollector collector = new FilteredElementCollector(doc, doc.ActiveView.Id);
-            collector.WhereElementIsNotElementType();
-
-            //this.categories = new Dictionary<string, ElementId>();
-            //this.parameters = new Dictionary<int, List<string>>();
-            cboFamilyCategory.BeginUpdate();
-            cboFamilyCategory.Sorted = true;
-
-            string str = null;
-
-            HashSet<int> hashSet1 = new HashSet<int>();     //what is hashset for
-            HashSet<BuiltInCategory> hashSet2 = new HashSet<BuiltInCategory>();     // what is hashset for?
-            hashSet2.Add((BuiltInCategory)(-2000500));  // )
-            hashSet2.Add((BuiltInCategory)(-2000535));  // )
-            hashSet2.Add((BuiltInCategory)(-2003101));  // )    not sure what these is?
-            hashSet2.Add((BuiltInCategory)(-2000700));  // )
-            hashSet2.Add((BuiltInCategory)(-2000278));  // )
-            hashSet2.Add((BuiltInCategory)(-2000510));  // )
-            HashSet<BuiltInCategory> hashSet3 = hashSet2; //what is hashset for?
-
-            List<string> catNameList = new List<string>();
-
-            IEnumerator<Element> enumerator;
-
-            
-            using (enumerator = collector.GetEnumerator())
-            {
-                while (enumerator.MoveNext())
-                {
-                    Element elem = enumerator.Current as Element;
-                    if (elem.Category !=null && !hashSet3.Contains((BuiltInCategory) elem.Category.Id.IntegerValue) && (!(elem is ElevationMarker) &&!(elem is Autodesk.Revit.DB.View)) && (elem is TextNote))
-                    //if (elem.Category !=null && !hashSet3.Contains((BuiltInCategory) elem.Category.Id.IntegerValue) && (!(elem is ElevationMarker) &&!(elem is Autodesk.Revit.DB.View)) && (elem is TextNote || FindRWParameters(current)))       // what is FindRWParameters?
-                    {
-                        string name = elem.Category.Name;
-                        catNameList.Add(name);
-                    }
-                }
-            }
-
-            cboFamilyCategory.Items.AddRange(catNameList);
+            //call the parameter method whenever the selected index of the family category changes
         }
+
+
+
+
+ 
 
                 
 

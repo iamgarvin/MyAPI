@@ -40,11 +40,12 @@ namespace AutoNumber
                 }
 
                 Document doc = commandData.Application.ActiveUIDocument.Document;
+                autoNumberData numData = new autoNumberData(doc);
 
                 newTran = new Transaction(doc);
                 newTran.Start("AutoNumber");
 
-                autoNumberForm dlg = new autoNumberForm();
+                autoNumberForm dlg = new autoNumberForm(numData, doc);
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {

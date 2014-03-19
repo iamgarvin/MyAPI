@@ -1,0 +1,104 @@
+internal class HorizontalComparer : IComparer<XYZ>
+  {
+    private const double EPSILON = 1E-06;
+    private readonly bool invertX;
+    private readonly bool invertY;
+    private readonly bool ignoreY;
+
+    public HorizontalComparer(bool invertX = false, bool invertY = false, bool ignoreY = false)
+    {
+      base.\u002Ector();
+      this.invertX = invertX;
+      this.invertY = invertY;
+      this.ignoreY = ignoreY;
+    }
+
+    public int Compare(XYZ p1, XYZ p2)
+    {
+      if (p1.IsAlmostEqualTo(p2))
+        return 0;
+      if (Math.Abs(p1.get_Z() - p2.get_Z()) > 1E-06)
+        return p1.get_Z().CompareTo(p2.get_Z());
+      if (this.ignoreY || Math.Abs(p1.get_Y() - p2.get_Y()) < 1E-06)
+        return p1.get_X().CompareTo(p2.get_X()) * (this.invertX ? -1 : 1);
+      else
+        return p1.get_Y().CompareTo(p2.get_Y()) * (this.invertY ? -1 : 1);
+    }
+  }
+
+
+================================================
+
+
+internal class VerticalComparer : IComparer<XYZ>
+  {
+    private const double EPSILON = 1E-06;
+    private readonly bool invertX;
+    private readonly bool invertY;
+    private readonly bool ignoreX;
+
+    public VerticalComparer(bool invertX = false, bool invertY = false, bool ignoreX = false)
+    {
+      base.\u002Ector();
+      this.invertX = invertX;
+      this.invertY = invertY;
+      this.ignoreX = ignoreX;
+    }
+
+    public int Compare(XYZ p1, XYZ p2)
+    {
+      if (p1.IsAlmostEqualTo(p2))
+        return 0;
+      if (Math.Abs(p1.get_Z() - p2.get_Z()) > 1E-06)
+        return p1.get_Z().CompareTo(p2.get_Z());
+      if (this.ignoreX || Math.Abs(p1.get_X() - p2.get_X()) < 1E-06)
+        return p1.get_Y().CompareTo(p2.get_Y()) * (this.invertY ? -1 : 1);
+      else
+        return p1.get_X().CompareTo(p2.get_X()) * (this.invertX ? -1 : 1);
+    }
+  }
+
+
+================================================
+
+
+Options 
+NumberGenerator
+
+
+=======================
+GET PARAMETERS
+
+
+
+string index = this.cbCategories.SelectedItem.ToString();
+            if ((string)this.cbParameters.Tag == index)
+                return;
+            int integerValue = this.categories[index].get_IntegerValue();
+            if (this.parameters.ContainsKey(integerValue))
+            {
+                this.cbParameters.Enabled = true;
+                this.cbParameters.BeginUpdate();
+                this.cbParameters.DataSource = (object)this.parameters[integerValue];
+                if (string.IsNullOrEmpty(this.options.ParameterName) || -1 == this.cbParameters.Items.IndexOf((object)this.options.ParameterName))
+                {
+                    if (integerValue == -2000160)
+                        this.cbParameters.SelectedItem = (object)this.builtInParameterNames[(BuiltInParameter) - 1006901];
+                    else if (this.builtInParameterNames.ContainsKey((BuiltInParameter) - 1001203) && -1 != this.cbParameters.Items.IndexOf((object)this.builtInParameterNames[(BuiltInParameter) - 1001203]))
+                        this.cbParameters.SelectedItem = (object)this.builtInParameterNames[(BuiltInParameter) - 1001203];
+                    else
+                        this.cbParameters.SelectedIndex = 0;
+                }
+                else
+                    this.cbParameters.SelectedItem = (object)this.options.ParameterName;
+                this.cbParameters.EndUpdate();
+            }
+            else
+            {
+                this.cbParameters.DataSource = (object)null;
+                this.cbParameters.Enabled = false;
+            }
+            this.cbParameters.Tag = (object)index;
+            this.dgvEltMacros.Rows.Clear();
+            foreach (string str in this.macros[integerValue])
+                this.dgvEltMacros.Rows.Add((object)str, (object)(bool)(this.options.GroupBy.Contains(str) ? 1 : 0));
