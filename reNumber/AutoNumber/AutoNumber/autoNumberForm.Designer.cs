@@ -47,9 +47,11 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.autoNumberFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).BeginInit();
+            this.rbtnSelectAll = new System.Windows.Forms.RadioButton();
+            this.rbtnManualSelect = new System.Windows.Forms.RadioButton();
+            //((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // updwnIncrement
@@ -90,6 +92,7 @@
             this.updwnStartValue.Name = "updwnStartValue";
             this.updwnStartValue.Size = new System.Drawing.Size(120, 20);
             this.updwnStartValue.TabIndex = 20;
+            this.updwnStartValue.Tag = "";
             this.updwnStartValue.Value = new decimal(new int[] {
             1,
             0,
@@ -98,6 +101,7 @@
             // 
             // cboParameter
             // 
+            this.cboParameter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboParameter.FormattingEnabled = true;
             this.cboParameter.Location = new System.Drawing.Point(97, 39);
             this.cboParameter.Name = "cboParameter";
@@ -107,6 +111,7 @@
             // 
             // cboDirection
             // 
+            this.cboDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDirection.FormattingEnabled = true;
             this.cboDirection.Items.AddRange(new object[] {
             "Left",
@@ -117,10 +122,10 @@
             this.cboDirection.Name = "cboDirection";
             this.cboDirection.Size = new System.Drawing.Size(121, 21);
             this.cboDirection.TabIndex = 16;
-            this.cboDirection.Text = "Choose Direction";
             // 
             // cboNumberingType
             // 
+            this.cboNumberingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNumberingType.FormattingEnabled = true;
             this.cboNumberingType.Items.AddRange(new object[] {
             "Numeric",
@@ -132,10 +137,10 @@
             this.cboNumberingType.Name = "cboNumberingType";
             this.cboNumberingType.Size = new System.Drawing.Size(121, 21);
             this.cboNumberingType.TabIndex = 17;
-            this.cboNumberingType.Text = "Select No. Type";
             // 
             // cboFamilyCategory
             // 
+            this.cboFamilyCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFamilyCategory.FormattingEnabled = true;
             this.cboFamilyCategory.Location = new System.Drawing.Point(97, 12);
             this.cboFamilyCategory.Name = "cboFamilyCategory";
@@ -246,11 +251,37 @@
             // 
             this.autoNumberFormBindingSource.DataSource = typeof(AutoNumber.autoNumberForm);
             // 
+            // rbtnSelectAll
+            // 
+            this.rbtnSelectAll.AutoSize = true;
+            this.rbtnSelectAll.Location = new System.Drawing.Point(39, 189);
+            this.rbtnSelectAll.Name = "rbtnSelectAll";
+            this.rbtnSelectAll.Size = new System.Drawing.Size(69, 17);
+            this.rbtnSelectAll.TabIndex = 21;
+            this.rbtnSelectAll.Text = "Select &All";
+            this.rbtnSelectAll.UseVisualStyleBackColor = true;
+            this.rbtnSelectAll.CheckedChanged += new System.EventHandler(this.rbtnSelectAll_CheckedChanged);
+            // 
+            // rbtnManualSelect
+            // 
+            this.rbtnManualSelect.AutoSize = true;
+            this.rbtnManualSelect.Checked = true;
+            this.rbtnManualSelect.Location = new System.Drawing.Point(116, 189);
+            this.rbtnManualSelect.Name = "rbtnManualSelect";
+            this.rbtnManualSelect.Size = new System.Drawing.Size(93, 17);
+            this.rbtnManualSelect.TabIndex = 21;
+            this.rbtnManualSelect.TabStop = true;
+            this.rbtnManualSelect.Text = "Manual Select";
+            this.rbtnManualSelect.UseVisualStyleBackColor = true;
+            this.rbtnManualSelect.CheckedChanged += new System.EventHandler(this.rbtnManualSelect_CheckedChanged);
+            // 
             // autoNumberForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 218);
+            this.Controls.Add(this.rbtnManualSelect);
+            this.Controls.Add(this.rbtnSelectAll);
             this.Controls.Add(this.updwnIncrement);
             this.Controls.Add(this.updwnStartValue);
             this.Controls.Add(this.cboParameter);
@@ -270,9 +301,9 @@
             this.Name = "autoNumberForm";
             this.Text = "autoNumberForm";
             this.Load += new System.EventHandler(this.autoNumberForm_Load);
-            //((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,5 +328,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.BindingSource autoNumberFormBindingSource;
+        private System.Windows.Forms.RadioButton rbtnSelectAll;
+        private System.Windows.Forms.RadioButton rbtnManualSelect;
     }
 }
