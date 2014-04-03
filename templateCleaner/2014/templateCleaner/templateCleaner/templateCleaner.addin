@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Application templateCleaner</Name>
+    <Description>Template Cleaner Addin for BIM Coordinator's only</Description>
+    <Assembly>templateCleaner.dll</Assembly>
+    <FullClassName>templateCleaner.templateCleanerApp</FullClassName>
+    <ClientId>1ed52656-432a-4556-92f2-1534efff2ea9</ClientId>
+    <VendorId>RSPA</VendorId>
+    <VendorDescription>RSP Architects Planners and Engineers (Pte) Ltd - (BIM Team)</VendorDescription>
+  </AddIn>
+</RevitAddIns>

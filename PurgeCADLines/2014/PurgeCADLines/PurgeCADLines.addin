@@ -3,7 +3,7 @@
   <AddIn Type="Command">
     <Text>Command PurgeCAD</Text>
     <Description>Some description for PurgeCAD</Description>
-    <Assembly>PurgeCAD.dll</Assembly>
+    <Assembly>PurgeCADLines.dll</Assembly>
     <FullClassName>PurgeCADLines.purgeCADLinesCmd</FullClassName>
     <ClientId>8feb1d93-1f3a-4692-9d1c-3b4f33558e5b</ClientId>
     <VendorId>RSPA</VendorId>
@@ -12,7 +12,7 @@
   </AddIn>
   <AddIn Type="Application">
     <Name>Application PurgeCAD</Name>
-    <Assembly>PurgeCAD.dll</Assembly>
+    <Assembly>PurgeCADLines.dll</Assembly>
     <ClientId>39151b64-88f2-4b15-a089-681afd70206d</ClientId>
     <FullClassName>PurgeCADLines.purgeCADLinesApp</FullClassName>
     <VendorId>RSPA</VendorId>
