@@ -14,7 +14,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.UI.Events;
 
-namespace rsprspTemplateCleaner
+namespace rspTemplateCleaner
 {
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Automatic)]
     [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
@@ -31,7 +31,7 @@ namespace rsprspTemplateCleaner
             try
             {
                 //Autodesk.Revit.UI.TaskDialog.Show("AddInPath Location", "The AddInPath Location is" + AddInPath);       //remove when  done, this is just for understanding purposes only
-                CreateRSPrspTemplateCleanerPanel(application);      //method to create the ribbon panels
+                CreaterspTemplateCleanerPanel(application);      //method to create the ribbon panels
 
                 return Result.Succeeded;
             }
@@ -52,7 +52,7 @@ namespace rsprspTemplateCleaner
 
 
         #region Create the RSP Ribbon Panel(s)
-        private void CreateRSPrspTemplateCleanerPanel(UIControlledApplication application)
+        private void CreaterspTemplateCleanerPanel(UIControlledApplication application)
         {
             //application.CreateRibbonTab("RSP BIM");
 
@@ -60,23 +60,25 @@ namespace rsprspTemplateCleaner
 
             string firstPanelName = "RSP Template Cleaner";
 
-            RibbonPanel rsprspTemplateCleanerRibbonPanel = application.CreateRibbonPanel("RSP", firstPanelName);
+            RibbonPanel rspTemplateCleanerRibbonPanel = application.CreateRibbonPanel("RSP", firstPanelName);
 
-            PulldownButtonData rsprspTemplateCleanerPullDownButtonData = new PulldownButtonData("rsprspTemplateCleanerPullDownButton", firstPanelName);
-            PulldownButton rsprspTemplateCleanerPullDownButton = (PulldownButton)rsprspTemplateCleanerRibbonPanel.AddItem((RibbonItemData)rsprspTemplateCleanerPullDownButtonData);
+            PulldownButtonData rspTemplateCleanerPullDownButtonData = new PulldownButtonData("rspTemplateCleanerPullDownButton", firstPanelName);
+            PulldownButton rspTemplateCleanerPullDownButton = (PulldownButton)rspTemplateCleanerRibbonPanel.AddItem((RibbonItemData)rspTemplateCleanerPullDownButtonData);
 
-            rsprspTemplateCleanerPullDownButton.ToolTip = "Click to open up menu of RSP In-House Revit tools";
-            rsprspTemplateCleanerPullDownButton.ItemText = firstPanelName;
+            rspTemplateCleanerPullDownButton.ToolTip = "Click to open up menu of RSP In-House Revit tools";
+            rspTemplateCleanerPullDownButton.ItemText = firstPanelName;
 
-            rsprspTemplateCleanerPullDownButton.Image = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "RSP_Template_RVT_S.png"), UriKind.Absolute));
-            rsprspTemplateCleanerPullDownButton.LargeImage = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "RSP_Template_RVT.png"), UriKind.Absolute));
+            rspTemplateCleanerPullDownButton.Image = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "RSP_Template_RVT_S.png"), UriKind.Absolute));
+            rspTemplateCleanerPullDownButton.LargeImage = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "RSP_Template_RVT.png"), UriKind.Absolute));
 
-            PushButtonData delLineStylesPushButtonData = new PushButtonData("delLineStylesPushBtn", "Delete All Line Styles", AddInPath, "rsprspTemplateCleaner.DeleteLineStylesCmd");
-            (rsprspTemplateCleanerPullDownButton.AddPushButton(delLineStylesPushButtonData)).ToolTip = "Delete and Purge all Line Styles of the Project.";
+            PushButtonData delLineStylesPushButtonData = new PushButtonData("delLineStylesPushBtn", "Delete All Line Styles", AddInPath, "rspTemplateCleaner.DeleteLineStylesCmd");
+            (rspTemplateCleanerPullDownButton.AddPushButton(delLineStylesPushButtonData)).ToolTip = "Delete and Purge all Line Styles of the Project.";
 
-            PushButtonData delCADLineStylesPushButtonData = new PushButtonData("delCADLineStylesPushBtn", "Delete All CAD Line Styles", AddInPath, "rsprspTemplateCleaner.DeleteCADLineStylesCmd");
-            (rsprspTemplateCleanerPullDownButton.AddPushButton(delCADLineStylesPushButtonData)).ToolTip = "Delete and Purge all CAD Line Styles of the Project.";
-            
+            PushButtonData delCADLineStylesPushButtonData = new PushButtonData("delCADLineStylesPushBtn", "Delete All CAD Line Styles", AddInPath, "rspTemplateCleaner.DeleteCADLineStylesCmd");
+            (rspTemplateCleanerPullDownButton.AddPushButton(delCADLineStylesPushButtonData)).ToolTip = "Delete and Purge all CAD Line Styles of the Project.";
+
+            PushButtonData delCADLinePatternsPushButtonData = new PushButtonData("delCADLinePatternsPushBtn", "Delete All CAD Line Patterns", AddInPath, "rspTemplateCleaner.PurgeCADLinesCmd");
+            (rspTemplateCleanerPullDownButton.AddPushButton(delCADLinePatternsPushButtonData)).ToolTip = "Delete and Purge all CAD Imported Line Patterns of the Project.";
 
             #endregion
 

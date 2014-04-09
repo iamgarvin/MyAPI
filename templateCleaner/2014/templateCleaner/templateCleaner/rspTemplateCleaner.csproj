@@ -66,6 +66,7 @@
     <Compile Include="DeleteCADLineStylesCmd.cs" />
     <Compile Include="DeleteLineStylesCmd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurgeCADLinesCmd.cs" />
     <Compile Include="rspTemplateCleanerApp.cs" />
   </ItemGroup>
   <ItemGroup>
