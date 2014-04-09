@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command FamilyBrowser</Text>
+    <Description>Some description for FamilyBrowser</Description>
+    <Assembly>FamilyBrowser.dll</Assembly>
+    <FullClassName>FamilyBrowser.Command</FullClassName>
+    <ClientId>f5d56833-74ef-4e91-b072-23108824d08e</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application FamilyBrowser</Name>
+    <Assembly>FamilyBrowser.dll</Assembly>
+    <FullClassName>FamilyBrowser.App</FullClassName>
+    <ClientId>662ba1a5-0ed6-4f32-9302-b2d8d8b4ee75</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
