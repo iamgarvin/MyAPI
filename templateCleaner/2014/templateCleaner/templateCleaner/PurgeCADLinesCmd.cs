@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -18,7 +19,7 @@ namespace rspTemplateCleaner
     [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
     [Autodesk.Revit.Attributes.Journaling(Autodesk.Revit.Attributes.JournalingMode.NoCommandData)]
 
-    public class purgeCADLinesCmd : IExternalCommand
+    public class PurgeCADLinesCmd : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -27,19 +28,23 @@ namespace rspTemplateCleaner
                 UIDocument activeUiDocument = commandData.Application.ActiveUIDocument;
                 Document doc = activeUiDocument.Document;
 
-                ICollection<ElementId> linePatternTypes = new FilteredElementCollector(doc).OfClass(typeof(LinePatternElement)).ToElementIds();
-                ICollection<ElementId> linePatternTypesUsed = new FilteredElementCollector(doc).OfClass(typeof(LinePatternElement)).ToElementIds();
+                ICollection<ElementId> collection = new FilteredElementCollector(doc).OfClass(typeof(LinePatternElement)).ToElementIds();
 
-                foreach (ElementId linePatternId in linePatternTypesUsed)
+                int num = 0;
+                using (IEnumerator<ElementId> enumerator = collection.GetEnumerator())
                 {
-                    LinePatternElement lp = doc.GetElement(linePatternId) as LinePatternElement;
-                    bool removed = linePatternTypes.Remove(lp.Id);
+                    while (enumerator.MoveNext())
+                    {
+                        ElementId current = enumerator.Current;
+                        if (doc.GetElement(current).Name.Contains("IMPORT"))
+                        {
+                            doc.Delete(current);
+                            ++num;
+                        }
+                    }
                 }
 
-                doc.Delete(linePatternTypes);
-
-
-                //TaskDialog.Show("RSP Purge CAD Lines", num.ToString() + "  Imported Line Patterns were deleted!");
+                TaskDialog.Show("RSP Purge CAD Lines", num.ToString() + "  Imported Line Patterns were deleted!");
             }
             catch (Exception ex)
             {
