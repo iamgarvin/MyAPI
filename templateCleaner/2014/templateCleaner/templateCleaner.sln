@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "templateCleaner", "templateCleaner\templateCleaner.csproj", "{B12133DB-FDDA-49AA-BCB3-FC47F4A8AB40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rspTemplateCleaner", "templateCleaner\rspTemplateCleaner.csproj", "{B12133DB-FDDA-49AA-BCB3-FC47F4A8AB40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

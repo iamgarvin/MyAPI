@@ -1,4 +1,4 @@
-#region Namespaces
+﻿#region Namespaces
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace rsprspTemplateCleaner
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
     [Autodesk.Revit.Attributes.Journaling(Autodesk.Revit.Attributes.JournalingMode.NoCommandData)]
-    public class DeleteLineStylesCmd : IExternalCommand
+    public class DeleteCADLineStylesCmd : IExternalCommand
     {
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
@@ -28,11 +28,11 @@ namespace rsprspTemplateCleaner
                 Application app = uiapp.Application;
                 Document doc = uidoc.Document;
 
-                
-                using (Transaction t = new Transaction(doc, "Delete Linestyles"))
+
+                using (Transaction t = new Transaction(doc, "Delete CAD Linestyles"))
                 {
                     t.Start();
-                    DeleteLineStyles(doc);
+                    DeleteCADLineStyles(doc);
 
                     t.Commit();
                 }
@@ -46,34 +46,26 @@ namespace rsprspTemplateCleaner
             return Result.Succeeded;
         }
 
-        public void DeleteLineStyles(Document doc)
+        public void DeleteCADLineStyles(Document doc)
         {
 
             Category linesCat = doc.Settings.Categories.get_Item("Lines");
 
-            IList<Category> categoryList = linesCat.SubCategories.Cast<Category>().ToList();
+            IList<Category> categoryList = linesCat.SubCategories.Cast<Category>().Where(c => c.Name.StartsWith("A-") || c.Name.StartsWith("S-")).ToList();
 
-            IList<Category> noDelList = linesCat.SubCategories.Cast<Category>().Where(c => c.Name.StartsWith("<") || c.Name.Equals("Lines") || c.Name.Equals("Hidden Lines") || c.Name.Equals("Insulation Batting Lines") || c.Name.Equals("Medium Lines") || c.Name.Equals("Thin Lines") || c.Name.Equals("Wide Lines") || c.Name.Equals("Axis of Rotation")).ToList();
+            //IList<Category> noDelList = linesCat.SubCategories.Cast<Category>().Where(c => c.Name.StartsWith("A-") || c.Name.StartsWith("S-")).ToList();
 
             IList<ElementId> idsToDelete = new List<ElementId>();
             IList<string> namesToDelete = new List<string>();
 
             foreach (Category cat in categoryList)
             {
-                if (noDelList.Contains(cat))
-                {
-                    continue;
-                }
-                else
-                {
-                    namesToDelete.Add(cat.Name.ToString());
-                    idsToDelete.Add(cat.Id);
-                }
-
+                namesToDelete.Add(cat.Name);
+                idsToDelete.Add(cat.Id);
                 //doc.Delete(cat.Id);
             }
 
-            TaskDialog.Show("Delete Line Styles", "The following Line Styles are deleted :- \n\n" + string.Join("\n", namesToDelete.Select(i => i.ToString()).ToArray()));
+            TaskDialog.Show("Delete CAD Line Styles", "The following Line Styles are deleted :- \n\n" + string.Join("\n", namesToDelete.Select(i => i.ToString()).ToArray()));
 
             doc.Delete(idsToDelete);
         }
@@ -82,4 +74,3 @@ namespace rsprspTemplateCleaner
     }
 }
 
-    
