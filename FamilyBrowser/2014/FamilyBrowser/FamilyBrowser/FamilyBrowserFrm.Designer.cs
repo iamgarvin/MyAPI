@@ -29,198 +29,221 @@
         private void InitializeComponent()
         {
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblFamilyBrowser = new System.Windows.Forms.Label();
+            this.grpboxThumbnails = new System.Windows.Forms.GroupBox();
+            this.picSideElevation = new System.Windows.Forms.PictureBox();
+            this.picFrontElevation = new System.Windows.Forms.PictureBox();
+            this.picPlanView = new System.Windows.Forms.PictureBox();
+            this.pic3D = new System.Windows.Forms.PictureBox();
+            this.grpboxProperties = new System.Windows.Forms.GroupBox();
+            this.dgvParameters = new System.Windows.Forms.DataGridView();
+            this.lblParameters = new System.Windows.Forms.Label();
+            this.lblFileName = new System.Windows.Forms.Label();
+            this.lblInstance = new System.Windows.Forms.Label();
+            this.lblFamily = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtFileName = new System.Windows.Forms.TextBox();
             this.instanceParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instanceParamData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeParamData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lbl3D = new System.Windows.Forms.Label();
+            this.lblPlan = new System.Windows.Forms.Label();
+            this.lblSideElevation = new System.Windows.Forms.Label();
+            this.lblFrontElevation = new System.Windows.Forms.Label();
+            this.btnFamilyDirectory = new System.Windows.Forms.Button();
+            this.txtFamilyDirectory = new System.Windows.Forms.TextBox();
+            this.lblFamilyDirectory = new System.Windows.Forms.Label();
+            this.picThumbnail = new System.Windows.Forms.PictureBox();
+            this.lblThumbnail = new System.Windows.Forms.Label();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.grpboxThumbnails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSideElevation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrontElevation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlanView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic3D)).BeginInit();
+            this.grpboxProperties.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParameters)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picThumbnail)).BeginInit();
             this.SuspendLayout();
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 30);
+            this.treeView1.Location = new System.Drawing.Point(12, 69);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(188, 533);
+            this.treeView1.Size = new System.Drawing.Size(250, 625);
             this.treeView1.TabIndex = 0;
             // 
-            // label5
+            // lblFamilyBrowser
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 11);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "label5";
+            this.lblFamilyBrowser.AutoSize = true;
+            this.lblFamilyBrowser.Location = new System.Drawing.Point(8, 53);
+            this.lblFamilyBrowser.Name = "lblFamilyBrowser";
+            this.lblFamilyBrowser.Size = new System.Drawing.Size(77, 13);
+            this.lblFamilyBrowser.TabIndex = 6;
+            this.lblFamilyBrowser.Text = "Family Browser";
             // 
-            // groupBox1
+            // grpboxThumbnails
             // 
-            this.groupBox1.Controls.Add(this.pictureBox4);
-            this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Controls.Add(this.pictureBox2);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(211, 11);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(482, 271);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.grpboxThumbnails.Controls.Add(this.lblFrontElevation);
+            this.grpboxThumbnails.Controls.Add(this.lblSideElevation);
+            this.grpboxThumbnails.Controls.Add(this.lblPlan);
+            this.grpboxThumbnails.Controls.Add(this.lbl3D);
+            this.grpboxThumbnails.Controls.Add(this.picSideElevation);
+            this.grpboxThumbnails.Controls.Add(this.lblThumbnail);
+            this.grpboxThumbnails.Controls.Add(this.picFrontElevation);
+            this.grpboxThumbnails.Controls.Add(this.picPlanView);
+            this.grpboxThumbnails.Controls.Add(this.picThumbnail);
+            this.grpboxThumbnails.Controls.Add(this.pic3D);
+            this.grpboxThumbnails.Location = new System.Drawing.Point(268, 11);
+            this.grpboxThumbnails.Name = "grpboxThumbnails";
+            this.grpboxThumbnails.Size = new System.Drawing.Size(445, 444);
+            this.grpboxThumbnails.TabIndex = 7;
+            this.grpboxThumbnails.TabStop = false;
+            this.grpboxThumbnails.Text = "Thumbnails";
             // 
-            // pictureBox1
+            // picSideElevation
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(147, 184);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picSideElevation.Location = new System.Drawing.Point(315, 313);
+            this.picSideElevation.Name = "picSideElevation";
+            this.picSideElevation.Size = new System.Drawing.Size(120, 120);
+            this.picSideElevation.TabIndex = 0;
+            this.picSideElevation.TabStop = false;
             // 
-            // pictureBox2
+            // picFrontElevation
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(172, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(147, 77);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.picFrontElevation.Location = new System.Drawing.Point(315, 174);
+            this.picFrontElevation.Name = "picFrontElevation";
+            this.picFrontElevation.Size = new System.Drawing.Size(120, 120);
+            this.picFrontElevation.TabIndex = 0;
+            this.picFrontElevation.TabStop = false;
             // 
-            // pictureBox3
+            // picPlanView
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(172, 102);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(147, 77);
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
+            this.picPlanView.Location = new System.Drawing.Point(315, 35);
+            this.picPlanView.Name = "picPlanView";
+            this.picPlanView.Size = new System.Drawing.Size(120, 120);
+            this.picPlanView.TabIndex = 0;
+            this.picPlanView.TabStop = false;
             // 
-            // pictureBox4
+            // pic3D
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(325, 102);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(147, 77);
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
+            this.pic3D.Location = new System.Drawing.Point(9, 35);
+            this.pic3D.Name = "pic3D";
+            this.pic3D.Size = new System.Drawing.Size(300, 205);
+            this.pic3D.TabIndex = 0;
+            this.pic3D.TabStop = false;
             // 
-            // groupBox2
+            // grpboxProperties
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Location = new System.Drawing.Point(211, 288);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(482, 275);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.grpboxProperties.Controls.Add(this.dgvParameters);
+            this.grpboxProperties.Controls.Add(this.lblParameters);
+            this.grpboxProperties.Controls.Add(this.lblFileName);
+            this.grpboxProperties.Controls.Add(this.lblInstance);
+            this.grpboxProperties.Controls.Add(this.lblFamily);
+            this.grpboxProperties.Controls.Add(this.textBox3);
+            this.grpboxProperties.Controls.Add(this.textBox2);
+            this.grpboxProperties.Controls.Add(this.txtFileName);
+            this.grpboxProperties.Location = new System.Drawing.Point(268, 461);
+            this.grpboxProperties.Name = "grpboxProperties";
+            this.grpboxProperties.Size = new System.Drawing.Size(445, 233);
+            this.grpboxProperties.TabIndex = 8;
+            this.grpboxProperties.TabStop = false;
+            this.grpboxProperties.Text = "Properties";
             // 
-            // label4
+            // dgvParameters
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 167);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "label4";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "label3";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(277, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "label2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "label1";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(277, 125);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(195, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(6, 125);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(195, 20);
-            this.textBox2.TabIndex = 7;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(6, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(466, 20);
-            this.textBox1.TabIndex = 8;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvParameters.AllowUserToAddRows = false;
+            this.dgvParameters.AllowUserToDeleteRows = false;
+            this.dgvParameters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvParameters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.instanceParam,
             this.instanceParamData,
             this.typeParam,
             this.typeParamData});
-            this.dataGridView1.Location = new System.Drawing.Point(10, 183);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(462, 86);
-            this.dataGridView1.TabIndex = 13;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvParameters.Location = new System.Drawing.Point(6, 115);
+            this.dgvParameters.Name = "dgvParameters";
+            this.dgvParameters.ReadOnly = true;
+            this.dgvParameters.RowHeadersWidth = 4;
+            this.dgvParameters.Size = new System.Drawing.Size(429, 104);
+            this.dgvParameters.TabIndex = 13;
+            // 
+            // lblParameters
+            // 
+            this.lblParameters.AutoSize = true;
+            this.lblParameters.Location = new System.Drawing.Point(6, 99);
+            this.lblParameters.Name = "lblParameters";
+            this.lblParameters.Size = new System.Drawing.Size(60, 13);
+            this.lblParameters.TabIndex = 12;
+            this.lblParameters.Text = "Parameters";
+            // 
+            // lblFileName
+            // 
+            this.lblFileName.AutoSize = true;
+            this.lblFileName.Location = new System.Drawing.Point(6, 21);
+            this.lblFileName.Name = "lblFileName";
+            this.lblFileName.Size = new System.Drawing.Size(54, 13);
+            this.lblFileName.TabIndex = 11;
+            this.lblFileName.Text = "File Name";
+            // 
+            // lblInstance
+            // 
+            this.lblInstance.AutoSize = true;
+            this.lblInstance.Location = new System.Drawing.Point(229, 60);
+            this.lblInstance.Name = "lblInstance";
+            this.lblInstance.Size = new System.Drawing.Size(48, 13);
+            this.lblInstance.TabIndex = 10;
+            this.lblInstance.Text = "Instance";
+            // 
+            // lblFamily
+            // 
+            this.lblFamily.AutoSize = true;
+            this.lblFamily.Location = new System.Drawing.Point(6, 60);
+            this.lblFamily.Name = "lblFamily";
+            this.lblFamily.Size = new System.Drawing.Size(36, 13);
+            this.lblFamily.TabIndex = 9;
+            this.lblFamily.Text = "Family";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(232, 76);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(203, 20);
+            this.textBox3.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(6, 76);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(220, 20);
+            this.textBox2.TabIndex = 7;
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFileName.Enabled = false;
+            this.txtFileName.Location = new System.Drawing.Point(6, 37);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(429, 20);
+            this.txtFileName.TabIndex = 8;
             // 
             // instanceParam
             // 
-            this.instanceParam.HeaderText = "Column1";
+            this.instanceParam.HeaderText = "Instance Parameter";
+            this.instanceParam.MinimumWidth = 3;
             this.instanceParam.Name = "instanceParam";
             this.instanceParam.ReadOnly = true;
+            this.instanceParam.Width = 120;
             // 
             // instanceParamData
             // 
-            this.instanceParamData.HeaderText = "Column1";
+            this.instanceParamData.HeaderText = "Instance Value";
             this.instanceParamData.Name = "instanceParamData";
             this.instanceParamData.ReadOnly = true;
             // 
@@ -232,29 +255,134 @@
             // 
             // typeParamData
             // 
-            this.typeParamData.HeaderText = "";
+            this.typeParamData.HeaderText = "Type Value";
             this.typeParamData.Name = "typeParamData";
             this.typeParamData.ReadOnly = true;
+            // 
+            // lbl3D
+            // 
+            this.lbl3D.AutoSize = true;
+            this.lbl3D.Location = new System.Drawing.Point(9, 19);
+            this.lbl3D.Name = "lbl3D";
+            this.lbl3D.Size = new System.Drawing.Size(47, 13);
+            this.lbl3D.TabIndex = 1;
+            this.lbl3D.Text = "3D View";
+            // 
+            // lblPlan
+            // 
+            this.lblPlan.AutoSize = true;
+            this.lblPlan.Location = new System.Drawing.Point(315, 19);
+            this.lblPlan.Name = "lblPlan";
+            this.lblPlan.Size = new System.Drawing.Size(28, 13);
+            this.lblPlan.TabIndex = 1;
+            this.lblPlan.Text = "Plan";
+            // 
+            // lblSideElevation
+            // 
+            this.lblSideElevation.AutoSize = true;
+            this.lblSideElevation.Location = new System.Drawing.Point(315, 297);
+            this.lblSideElevation.Name = "lblSideElevation";
+            this.lblSideElevation.Size = new System.Drawing.Size(75, 13);
+            this.lblSideElevation.TabIndex = 1;
+            this.lblSideElevation.Text = "Side Elevation";
+            // 
+            // lblFrontElevation
+            // 
+            this.lblFrontElevation.AutoSize = true;
+            this.lblFrontElevation.Location = new System.Drawing.Point(315, 158);
+            this.lblFrontElevation.Name = "lblFrontElevation";
+            this.lblFrontElevation.Size = new System.Drawing.Size(78, 13);
+            this.lblFrontElevation.TabIndex = 1;
+            this.lblFrontElevation.Text = "Front Elevation";
+            // 
+            // btnFamilyDirectory
+            // 
+            this.btnFamilyDirectory.Location = new System.Drawing.Point(229, 30);
+            this.btnFamilyDirectory.Name = "btnFamilyDirectory";
+            this.btnFamilyDirectory.Size = new System.Drawing.Size(33, 23);
+            this.btnFamilyDirectory.TabIndex = 5;
+            this.btnFamilyDirectory.Text = "...";
+            this.btnFamilyDirectory.UseVisualStyleBackColor = true;
+            // 
+            // txtFamilyDirectory
+            // 
+            this.txtFamilyDirectory.Enabled = false;
+            this.txtFamilyDirectory.Location = new System.Drawing.Point(11, 30);
+            this.txtFamilyDirectory.Name = "txtFamilyDirectory";
+            this.txtFamilyDirectory.Size = new System.Drawing.Size(212, 20);
+            this.txtFamilyDirectory.TabIndex = 10;
+            // 
+            // lblFamilyDirectory
+            // 
+            this.lblFamilyDirectory.AutoSize = true;
+            this.lblFamilyDirectory.Location = new System.Drawing.Point(12, 11);
+            this.lblFamilyDirectory.Name = "lblFamilyDirectory";
+            this.lblFamilyDirectory.Size = new System.Drawing.Size(81, 13);
+            this.lblFamilyDirectory.TabIndex = 11;
+            this.lblFamilyDirectory.Text = "Family Directory";
+            // 
+            // picThumbnail
+            // 
+            this.picThumbnail.Location = new System.Drawing.Point(9, 259);
+            this.picThumbnail.Name = "picThumbnail";
+            this.picThumbnail.Size = new System.Drawing.Size(300, 174);
+            this.picThumbnail.TabIndex = 0;
+            this.picThumbnail.TabStop = false;
+            // 
+            // lblThumbnail
+            // 
+            this.lblThumbnail.AutoSize = true;
+            this.lblThumbnail.Location = new System.Drawing.Point(9, 243);
+            this.lblThumbnail.Name = "lblThumbnail";
+            this.lblThumbnail.Size = new System.Drawing.Size(56, 13);
+            this.lblThumbnail.TabIndex = 1;
+            this.lblThumbnail.Text = "Thumbnail";
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(536, 701);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 12;
+            this.btnOK.Text = "&OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(628, 701);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "C&ancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // FamilyBrowserFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 575);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(726, 736);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.lblFamilyDirectory);
+            this.Controls.Add(this.txtFamilyDirectory);
+            this.Controls.Add(this.btnFamilyDirectory);
+            this.Controls.Add(this.grpboxProperties);
+            this.Controls.Add(this.grpboxThumbnails);
+            this.Controls.Add(this.lblFamilyBrowser);
             this.Controls.Add(this.treeView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FamilyBrowserFrm";
-            this.Text = "FamilyBrowserFrm";
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Text = "RSP Family Browser";
+            this.grpboxThumbnails.ResumeLayout(false);
+            this.grpboxThumbnails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSideElevation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrontElevation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlanView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic3D)).EndInit();
+            this.grpboxProperties.ResumeLayout(false);
+            this.grpboxProperties.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvParameters)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picThumbnail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,24 +391,35 @@
         #endregion
 
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblFamilyBrowser;
+        private System.Windows.Forms.GroupBox grpboxThumbnails;
+        private System.Windows.Forms.PictureBox picSideElevation;
+        private System.Windows.Forms.PictureBox picFrontElevation;
+        private System.Windows.Forms.PictureBox picPlanView;
+        private System.Windows.Forms.PictureBox pic3D;
+        private System.Windows.Forms.GroupBox grpboxProperties;
+        private System.Windows.Forms.DataGridView dgvParameters;
+        private System.Windows.Forms.Label lblParameters;
+        private System.Windows.Forms.Label lblFileName;
+        private System.Windows.Forms.Label lblInstance;
+        private System.Windows.Forms.Label lblFamily;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtFileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn instanceParam;
         private System.Windows.Forms.DataGridViewTextBoxColumn instanceParamData;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeParam;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeParamData;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblFrontElevation;
+        private System.Windows.Forms.Label lblSideElevation;
+        private System.Windows.Forms.Label lblPlan;
+        private System.Windows.Forms.Label lbl3D;
+        private System.Windows.Forms.Button btnFamilyDirectory;
+        private System.Windows.Forms.TextBox txtFamilyDirectory;
+        private System.Windows.Forms.Label lblFamilyDirectory;
+        private System.Windows.Forms.PictureBox picThumbnail;
+        private System.Windows.Forms.Label lblThumbnail;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
