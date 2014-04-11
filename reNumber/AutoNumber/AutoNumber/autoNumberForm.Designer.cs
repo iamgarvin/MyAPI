@@ -49,9 +49,9 @@
             this.autoNumberFormBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rbtnSelectAll = new System.Windows.Forms.RadioButton();
             this.rbtnManualSelect = new System.Windows.Forms.RadioButton();
-            //((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updwnIncrement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updwnStartValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autoNumberFormBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // updwnIncrement
@@ -235,6 +235,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 

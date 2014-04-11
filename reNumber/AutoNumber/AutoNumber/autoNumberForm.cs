@@ -27,18 +27,36 @@ namespace AutoNumber
             InitializeComponent(); //begins the form to load
         }
 
-        private void autoNumberForm_Load(object sender, EventArgs e)
+        private void initializeForm()
         {
-            this.cboFamilyCategory.Items.AddRange(m_data.returnAllCatNames.ToArray());     //call the get all categories 
             this.cboFamilyCategory.SelectedIndex = 0;
-            //cboParameter.Items.AddRange(m_data.something);          // call get all parameters for 1st or default category
-
             m_data.SelectedCategory = cboFamilyCategory.SelectedItem.ToString();
             m_data.RefreshParameters();
-            //m_data.GetParameters(m_data.SelectedCategory);
             this.cboParameter.Items.Clear();
             this.cboParameter.Items.AddRange(m_data.returnAllParametersNames.ToArray());
             this.cboParameter.SelectedIndex = 0;
+        }
+
+        private void autoNumberForm_Load(object sender, EventArgs e)
+        {
+            //if elements are selected before invoking command
+            //this.cboFamilyCategory.Items.AddRange = only contains selected elements
+            //initializeForm();
+            
+            //else
+            //{
+            this.cboFamilyCategory.Items.AddRange(m_data.returnAllCatNames.ToArray());     //call the get all categories 
+            initializeForm();
+            //this.cboFamilyCategory.SelectedIndex = 0;
+            
+            //m_data.SelectedCategory = cboFamilyCategory.SelectedItem.ToString();
+            //m_data.RefreshParameters();
+            
+            //this.cboParameter.Items.Clear();
+            //this.cboParameter.Items.AddRange(m_data.returnAllParametersNames.ToArray());
+            //this.cboParameter.SelectedIndex = 0;
+            //}
+
 
             this.cboNumberingType.SelectedIndex = 0;
             this.updwnIncrement.Value = 1;
@@ -46,10 +64,9 @@ namespace AutoNumber
             this.updwnStartValue.Value = 1;
             //this.updwnStartValue.Update();
             this.cboDirection.SelectedIndex = 0;
-
-
-
         }
+
+
 
         private void btnOK_Click(object sender, EventArgs e)
         {
@@ -59,7 +76,8 @@ namespace AutoNumber
             m_data.AutoNumberSelected();
 
             this.DialogResult = DialogResult.OK;    // set dialog result
-            this.Close();     
+            this.Close();
+
         }
 
         private void cboFamilyCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,6 +124,12 @@ namespace AutoNumber
             {
                 rbtnManualSelect.Checked = !rbtnSelectAll.Checked;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
  
 

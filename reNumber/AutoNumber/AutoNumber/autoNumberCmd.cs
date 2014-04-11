@@ -70,13 +70,12 @@ namespace AutoNumber
 
 
                         //3. displays a message box to inform user that XX number of items are numbered from what number to what number
-
+                ICollection<ElementId> elementIds;
 
                 if (numData.SelectionType)
                 {
                     CategorySelectionFilter manualSelect = new CategorySelectionFilter(numData.GetCategoryId(numData.SelectedCategory));
-                    ICollection<ElementId> elementIds;
-
+                    
                     if(elementSelect.Elements.Size == 0)        //if no element is selected before invoking command
                     {
                         try 
@@ -109,8 +108,7 @@ namespace AutoNumber
                 }
                 else
                 {
-                    ICollection<ElementId> elementIds;
-
+                    
                     FilteredElementCollector collector = new FilteredElementCollector(doc, doc.ActiveView.Id);
                     elementIds = (ICollection<ElementId>)new Collection<ElementId>();
                     IEnumerator<Element> enumerator;
@@ -127,6 +125,10 @@ namespace AutoNumber
                     }
                     //this.Number(elementIds);
                 }
+                
+
+                //call the function to write the numbering to all selected elements
+                
 
                 newTran.Commit();
 

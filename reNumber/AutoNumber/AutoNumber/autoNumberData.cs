@@ -23,7 +23,7 @@ namespace AutoNumber
         private string m_selectedCategory, m_selectedParameters, m_selectedNumType, m_selectedDirection;
         private int m_selectedStartValue, m_selectedIncrement;
         private bool m_selectionType;
-        
+        private List<ElementId> m_selectedElementIds = new List<ElementId>();
 
         //private Dictionary<int, List<string>> parametersDictionary;
         //private readonly Dictionary<BuiltInParameter, string> builtInParametersNamesDictionary;
@@ -137,6 +137,18 @@ namespace AutoNumber
                 m_selectionType = value;
             }
         }
+        public List<ElementId> SelectedElementIds
+        {
+            get
+            {
+                return m_selectedElementIds;
+            }
+            set
+            {
+                m_selectedElementIds = value;
+            }
+        }
+
 
         public void refreshList()
         {
@@ -150,13 +162,7 @@ namespace AutoNumber
         public autoNumberData(Document doc)
         {
             refreshList();
-            //call method to get all categories
             GetCategories(doc);
-
-
-            //call method to get all parameters of each category
-            //GetParameters(doc);
-
         }
 
         //method to get all categories
@@ -165,7 +171,7 @@ namespace AutoNumber
             FilteredElementCollector collector = null;
 
             //collector = new FilteredElementCollector(doc, doc.ActiveView.Id);
-            collector = new FilteredElementCollector(doc);
+            collector = new FilteredElementCollector(doc, doc.ActiveView.Id);
 
             collector.WhereElementIsNotElementType();
             
@@ -201,8 +207,8 @@ namespace AutoNumber
                             {
                                 Parameter parameter = enumerator2.Current as Parameter;
                                 //check parameters of chosen categories for non-read-only string parameters
-                                //if(!parameter.IsReadOnly && parameter.StorageType.ToString().Equals("String"))
-                                if (parameter.StorageType.ToString().Equals("String"))
+                                if(!parameter.IsReadOnly && parameter.StorageType.ToString().Equals("String"))
+                                //if (parameter.StorageType.ToString().Equals("String"))
                                 {
                                     paramName.Add(parameter.Definition.Name.ToString());  
                                     
@@ -212,7 +218,7 @@ namespace AutoNumber
                                     //TaskDialog.Show("test", elem.Category.Name + " + " + parameter.Definition.Name.ToString());   )
 
                                     string name = elem.Category.Name;
-
+                                    //TaskDialog.Show("Test", elem.Location.ToString());
                                     if (!m_allCatNames.Contains(name))
                                     {
                                         m_allCatNames.Add(name);
@@ -238,12 +244,11 @@ namespace AutoNumber
                 if (paramList2.Count == 0)
                     TaskDialog.Show("Error", "No Elements with writeable parameters found!\n" + "Please check that current view is correct and try again.");
 
-                ShowDictionary();
+                //ShowDictionary();
             
                 //TaskDialog.Show("test", string.Join("\n", paramList.Select(i => i.Key.ToString() + " + " + i.Value.ToString()).ToArray()));
             }
         }
-
 
         private void ShowDictionary()       //for testing purposes
         {                      
@@ -259,10 +264,14 @@ namespace AutoNumber
             TaskDialog.Show("paramter namelist test", dic3);
         }
 
+        private void ShowGetValues()
+        {
+            TaskDialog.Show("test", SelectedCategory + "\n" + SelectedParameters + "\n" + SelectedNumType + "\n" + SelectedDirection + "\n" + SelectedStartValue.ToString() + "\n" + SelectedIncrement.ToString() + "\n" + SelectionType.ToString());
+        }       //for testing purposes
+
        
         public void RefreshParameters()
         {
-            
             List<string> updateParams = new List<string>();
 
             int catID;
@@ -290,6 +299,57 @@ namespace AutoNumber
 
         public void AutoNumberSelected()
         {
+            //what is this for
+        }
+
+        //call the function to write the numbering to all selected elements
+        //1.send the selected elementIds to autoNumberData to commence writing function
+        //2. enumerate all elements in the active view
+        //3. check if element id matches selected elementId
+        //4. get location point of each element
+        //5. check selecteddirection
+        //6. capture location point of each element into a collection based on selected diurection
+        //7. enumerate the elements in the collection in order
+        //8. find the parameter that matches the selected parameter
+        //9. convert the starting value to string
+        //10. write the starting value to the parameter
+        //11. increment the strating value and prepare to write to next one
+        private void AutoNumberToElement(Document doc, ICollection<ElementId> elementIds)
+        {
+            ShowGetValues();
+
+            SelectedElementIds.AddRange(elementIds);
+
+            FilteredElementCollector collector = new FilteredElementCollector(doc, doc.ActiveView.Id);
+            collector.WhereElementIsNotElementType();
+            IEnumerator<Element> enumerator;
+
+            IList<Element> sortedElements = new List<Element>();
+            //sortedElements.Clear();
+            
+            using (enumerator = collector.GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Element elem = enumerator.Current as Element;
+
+                    foreach (ElementId elemId in SelectedElementIds)
+                    {
+                        if (elem.Id.Equals(elemId))
+                        {
+                            foreach (Element elemSort in sortedElements)
+                            { }
+                            
+                            //check element XYZ coordinates is before/after the existing elements in a list
+                            //store XYZ coordinates into a Collection/List/Array, in sequence based on the selectedDirection
+                        }
+                    }
+                }
+            }
+
+
+                
+            
 
         }
 
@@ -306,6 +366,18 @@ namespace AutoNumber
                 return 0;
             }
         }
+
+        //Direction Comparer to compare the positions of 2 selected elements at a time based on the selected dimension
+        private void DirectionComparer(string selectedDirection, XYZ elem1, XYZ elem2)
+        {
+
+        }
+
+        //WriteToParameter to write the stated value into the Selected Parameter of the selected element
+        private void WriteToParameter(Element elem, string value)
+        {
+
+        }
     }
 
 
@@ -316,7 +388,6 @@ namespace AutoNumber
 
         public CategorySelectionFilter(int categoryId)
         {
-
             m_categoryId = categoryId;
         }
 
