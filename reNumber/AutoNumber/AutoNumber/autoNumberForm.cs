@@ -35,6 +35,7 @@ namespace AutoNumber
 
             m_data.SelectedCategory = cboFamilyCategory.SelectedItem.ToString();
             m_data.RefreshParameters();
+            //m_data.GetParameters(m_data.SelectedCategory);
             this.cboParameter.Items.Clear();
             this.cboParameter.Items.AddRange(m_data.returnAllParametersNames.ToArray());
             this.cboParameter.SelectedIndex = 0;
@@ -65,8 +66,9 @@ namespace AutoNumber
         {
             //call the parameter method whenever the selected index of the family category changes
             m_data.SelectedCategory = cboFamilyCategory.SelectedItem.ToString();
-            m_data.RefreshParameters();
             this.cboParameter.Items.Clear();
+            m_data.RefreshParameters();
+            //m_data.GetParameters(cboFamilyCategory.SelectedItem.ToString());
             this.cboParameter.Items.AddRange(m_data.returnAllParametersNames.ToArray());
             this.cboParameter.SelectedIndex = 0;
         }
